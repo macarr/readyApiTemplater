@@ -1,0 +1,3 @@
+post_login
+POST /login
+{ "cpf": "56217496500", "password": "56217496500", "riskScore": 2, "latitude": 43.7, "longitude": -79.4, "device": ${#TestCase#Device_JSON} }
