@@ -25,6 +25,12 @@ class LoginDeviceJsonTemplate extends Template {
             json.deviceId = deviceId
         }
 
+        void phoneNumber(int countryCode, int areaCode, int phone) {
+            json.countryCode = countryCode
+            json.areaCode = areaCode
+            json.phone = phone
+        }
+
     }
 
 }

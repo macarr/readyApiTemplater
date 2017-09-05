@@ -1,7 +1,5 @@
 package bradesco.readyApi
 
-import groovy.swing.SwingBuilder
-
 class TemplateLoader {
 
     /**
@@ -40,34 +38,21 @@ class TemplateLoader {
         return templatesMap.get(templateName)
     }
 
-    /*static Template pick() {
-        getTemplateFiles()
-        def templateNames = templatesMap.keySet().asList()
-        def templateKey = null
-        new SwingBuilder().edt {
-            dialog(modal: true,
-                    title: 'Enter program name',
-                    alwaysOnTop: true,
-                    resizable: true,
-                    locationRelativeTo: null,
-                    pack: true,
-                    show: true
-            ) {
-                vbox { // Put everything below each other
-                    label(text: "Template Name")
-                    scrollPane {
-                        list(id: 'templateName', items: templateNames, visibleRowCount: 10)
-                    }
-                    button(defaultButton: true, text: 'Select', actionPerformed: {
-                        templateKey = templateName.selectedValuesList
-                        dispose() // Close dialog
-                    })
-                }
-            }
+    static List<Template> loadTemplates(List<File> templateFiles) {
+        def templateList = []
+        templateFiles.each { file ->
+            def template = new Template()
+            template.load(file)
+            templateList << template
         }
-//        println templateKey[0].getClass()
-//        println(templateKey[0])
-        Template template = templatesMap.get(templateKey[0].toString())
-        return template
-    }*/
+        return templateList
+    }
+
+    static Map<String, Template> mapLoadedTemplates(List<Template> templateList) {
+        def templateMap = [:]
+        templateList.each {
+            templateMap << [(it.name):it]
+        }
+        return templateMap
+    }
 }

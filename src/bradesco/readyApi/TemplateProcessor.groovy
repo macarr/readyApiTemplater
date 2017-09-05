@@ -16,7 +16,7 @@ class TemplateProcessor {
                     continue
                 }
                 def key = '\"$$token' + count + '$$\"'
-                println key
+//                println key
                 tokensMap << [(key):text[i..end]]
                 text = "${text.substring(0, i)}$key${text.substring(end+1, text.length())}"
                 count++

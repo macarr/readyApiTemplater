@@ -21,4 +21,10 @@ class Change {
         return template.body
     }
 
+    void allOf(Map<String, Object> replaceMap) {
+        replaceMap.keySet().each {
+            json."$it" = replaceMap.get(it)
+        }
+    }
+
 }
