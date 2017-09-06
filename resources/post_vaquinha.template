@@ -1,0 +1,10 @@
+post_vaquinha
+POST /vaquinhas
+{
+  "value": "10",
+  "expiryDate": "2018-07-20",
+  "name": "QaVaqCreateName6",
+  "description": "QaVaqCreateName6",
+  "vaquinhaTypeCode": "Carnaval",
+  "termsAndConditionsUID": "2"
+}
