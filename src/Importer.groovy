@@ -3,6 +3,7 @@ import bradesco.readyApi.TemplateLoader
 import bradesco.readyApi.TemplateViewer
 import bradesco.readyApi.templates.LoginDeviceJsonTemplate
 import bradesco.readyApi.templates.PostLoginTemplate
+import bradesco.readyApi.templates.PostVaquinha
 
 def cpf = "88888888888"
 def password = "88888888888"
@@ -43,6 +44,11 @@ deviceJsonTemplate.change.deviceId(deviceId)
 deviceJsonTemplate.change.phoneNumber(1, 416, 5551234)
 output = deviceJsonTemplate.change.apply()
 println "Output:::\t\t$output"
+
+PostVaquinha vaquinha = new PostVaquinha()
+vaquinha.change.keyToProperty("amount", "#TestCase#amount")
+println vaquinha.change.json
+println vaquinha.change.apply()
 
 //Generic Change Test
 

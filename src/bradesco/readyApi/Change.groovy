@@ -21,4 +21,12 @@ class Change {
         return template.body
     }
 
+    void keyToProperty(String key, String propertyName) {
+        def count = template.tokensmap.size()
+        def token = '$$token' + count + '$$'
+        json."$key" = token
+        def property = '${' + propertyName + '}'
+        template.tokensmap << [(token):property]
+    }
+
 }
