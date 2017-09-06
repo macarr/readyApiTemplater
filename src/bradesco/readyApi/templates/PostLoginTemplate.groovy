@@ -22,7 +22,7 @@ class PostLoginTemplate extends Template {
         }
 
         void loginCredentials(String cpf, String password) {
-            json.username = cpf
+            json.cpf = cpf
             json.password = password
         }
 

@@ -31,6 +31,11 @@ class LoginDeviceJsonTemplate extends Template {
             json.phone = phone
         }
 
+        void makeAndModel(String make, String model) {
+            json.make = make
+            json.model = model
+        }
+
     }
 
 }
