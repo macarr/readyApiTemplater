@@ -7,20 +7,20 @@ import bradesco.readyApi.TemplateLoader
 /**
  * Template for device JSON objects in requests
  */
-class LoginDeviceJsonTemplate extends Template {
+class DeviceObject extends Template {
 
-    LoginDeviceJsonTemplateChange change
+    DeviceObjectChange change
     File templateFile
     def templateName = "device_json"
 
-    LoginDeviceJsonTemplate() {
+    DeviceObject() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new LoginDeviceJsonTemplateChange(this)
+        this.change = new DeviceObjectChange(this)
     }
 
-    class LoginDeviceJsonTemplateChange extends Change {
-        LoginDeviceJsonTemplateChange(Template template) {
+    class DeviceObjectChange extends Change {
+        DeviceObjectChange(Template template) {
             super(template)
         }
 

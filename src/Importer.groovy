@@ -1,10 +1,7 @@
-import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
-import bradesco.readyApi.TemplateViewer
-import bradesco.readyApi.templates.LoginDeviceJsonTemplate
-import bradesco.readyApi.templates.PostLoginTemplate
+import bradesco.readyApi.templates.DeviceObject
+import bradesco.readyApi.templates.PostLogin
 import bradesco.readyApi.templates.PostVaquinha
-import junit.framework.TestCase
 
 def cpf = "88888888888"
 def password = "88888888888"
@@ -31,7 +28,7 @@ TemplateViewer.createChange(template)*/
 
 //Specific Change Test
 
-PostLoginTemplate postLoginTemplate = new PostLoginTemplate()
+PostLogin postLoginTemplate = new PostLogin()
 println "Original:::\t$postLoginTemplate.body"
 postLoginTemplate.change.loginCredentials(cpf, password)
 postLoginTemplate.change.riskScore(4)
@@ -39,7 +36,7 @@ def output = postLoginTemplate.change.apply()
 println "Output:::\t\t$output"
 //testRunner.testCase.setPropertyValue('template', output)
 
-LoginDeviceJsonTemplate deviceJsonTemplate = new LoginDeviceJsonTemplate()
+DeviceObject deviceJsonTemplate = new DeviceObject()
 println "Original:::\t$deviceJsonTemplate.body"
 deviceJsonTemplate.change.deviceId(deviceId)
 deviceJsonTemplate.change.phoneNumber(1, 416, 5551234)
@@ -54,7 +51,7 @@ println "Output:::\t\t$output"
 
 //Generic Change Test
 
-/*PostLoginTemplate postLoginTemplate = new PostLoginTemplate()
+/*PostLogin postLoginTemplate = new PostLogin()
 println "Original:::\t$postLoginTemplate.body"
 postLoginTemplate.change.allOf([cpf:'1234567890', password:'thisis_apassword'])
 def output = postLoginTemplate.change.apply()

@@ -8,22 +8,22 @@ import bradesco.readyApi.TemplateLoader
  * Template for POST /login requests
  *
  * Requests using this template will require #TestCase#Device_JSON to have a valid Device object
- * set, potentially using LoginDeviceJsonTemplate.groovy
+ * set, potentially using DeviceObject.groovy
  */
-class PostLoginTemplate extends Template {
+class PostLogin extends Template {
 
-    PostLoginTemplateChange change
+    PostLoginChange change
     File templateFile
     def templateName = "post_login"
 
-    PostLoginTemplate() {
+    PostLogin() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new PostLoginTemplateChange(this)
+        this.change = new PostLoginChange(this)
     }
 
-    class PostLoginTemplateChange extends Change {
-        PostLoginTemplateChange(Template template) {
+    class PostLoginChange extends Change {
+        PostLoginChange(Template template) {
             super(template)
         }
 
