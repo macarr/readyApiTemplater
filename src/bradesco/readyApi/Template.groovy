@@ -31,19 +31,23 @@ class Template {
     void load(File file) {
         this.file = file
         StringBuilder sb = new StringBuilder("")
-        def getTitle = true
-        def getName = false
-        file.eachLine { line ->
-            if(getTitle) {
-                title = line
-                getTitle = false
-                getName = true
-            } else if(getName) {
-                getName = false
-                name = line
-            } else {
-                sb.append(line)
+        def getTitle = false
+        def getName = true
+        try {
+            file.eachLine { line ->
+                if (getName) {
+                    name = line
+                    getTitle = true
+                    getName = false
+                } else if (getTitle) {
+                    getTitle = false
+                    title = line
+                } else {
+                    sb.append(line)
+                }
             }
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Failed to process template $file. If this is null, the template map has not been loaded with this template", e)
         }
         body = sb.toString()
     }

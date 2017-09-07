@@ -1,0 +1,95 @@
+put_application
+PUT /application
+{
+"addresses": [
+		{
+			"addressAdditionalInfo": "QAUpdateAppAdditionalInfo",
+			"addressType": 2,
+			"cityId": 79,
+			"mailingAddressInd": "Y",
+			"neighbourhood": "QAUpdateAppNeigh",
+			"postalCode": 23432123,
+			"stateCd": "CA",
+			"streetName": "Springfield",
+			"streetNumber": "1001"
+		}
+],
+"birthPlace": "Toronto",
+"birthdate": "2016-07-11",
+"cnhId": "223244",
+"countryOfBirth": 0,
+"customerAssets": [
+		{
+			"assetQuantity": 1,
+			"assetTypeId": 2,
+			"assetValueAmt": 10000,
+			"customerUid": "${JDBC Request: Get from PROPOSAL#ResponseAsXml#//Results[1]/ResultSet[1]/Row[1]/CUSTOMER_UID[1]}"
+		}
+],
+"customerName": "QA UpdateApp",
+"documentIssuerDepartment": "QAUpdateAppIssuerDept",
+"documentIssuerStateId": "QA",
+"eduCompletionDt": "2016-07-11",
+"eduCurrentSemester": 0,
+"eduInstitutionName": "QAUpdateAppInstName",
+"eduInstitutionStateCd": "QA",
+"eduLastUpdatedDt": "2016-07-11",
+"eduMajor": "Math",
+"eduInstitutionStateId": "ABC",
+"educationLevelId": 1,
+"email": "QAUpdateApp00@host.br",
+"fatcaResponses": [
+		{
+			"countryId": 12,
+			"fatcaQuestionId": 1,
+			"reasonMissingNifId": 1
+		}
+],
+"fatherName": "QA Father",
+"gender": "M",
+"influencerInd": "N",
+"maritalStatus": 1,
+"monthlyIncome": 1000,
+"motherName": "QA Mother",
+"pepRelatedCpf": "12345678911",
+"pepRelatedId": 0,
+"pepRoleId": 0,
+"phoneNumbers": [
+		{
+			"countryCode": 55,
+			"areaCode": 11,
+			"phoneNumber": 564347801,
+			"phoneType": 6,
+			"primaryPhoneInd": "Y"
+		}
+],
+"professionId": 0,
+"professionCategoryId": 0,
+"proposal": {
+    "approvedCreditAmount": 10000,
+    "creditDecisionCode": 1,
+    "listOfproducts": [
+      {
+        "productAmount": 10,
+        "productCode": 6,
+        "productEndDate": "2016-10-06",
+        "productStartDate": "2017-10-06",
+        "productType": 1,
+        "supportCredit": "Y"
+      }
+    ],
+    "offersMaintained": "Y",
+    "planAmount": 1,
+    "planChes": 1,
+    "planCode": 1,
+    "planEndDate": "2016-10-06",
+    "planLime": 1,
+    "planStartDate": "2016-10-06",
+    "supportCredit": "Y",
+    "uniqueID": ${JDBC Request: Get from PROPOSAL#ResponseAsXml#//Results[1]/ResultSet[1]/Row[1]/PROPOSAL_UID[1]}
+  }},
+"referencePersonName": "string",
+"referencePersonPhoneNr": 0,
+"referencePersonTypeId": 0,
+"spouseName": "Mr Husband"
+}

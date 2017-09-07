@@ -4,6 +4,7 @@ import groovy.swing.SwingBuilder
 import org.apache.tools.ant.taskdefs.Java
 
 import javax.swing.JFrame
+import javax.swing.JLabel
 import javax.swing.JPanel
 import javax.swing.ListSelectionModel
 import javax.swing.event.DocumentListener
@@ -53,64 +54,59 @@ class TemplateViewer {
         }
     }
 
-    static JPanel jsonToPanel(def json) {
-
-    }
-
     /**
      * Unsupported
      * @param template
      */
     static void createChange(Template template) {
         Change change = new Change(template)
-        def editMap = [:]
         def json = change.json
-        def sb = new SwingBuilder()
-        sb.frame(title: 'Enter program name',
+        def frame = new SwingBuilder()
+        frame.frame(title: 'Enter program name',
                 alwaysOnTop: true,
                 resizable: true,
                 locationRelativeTo: null,
                 pack: true,
                 show: true,
                 defaultCloseOperation: JFrame.EXIT_ON_CLOSE) {
-            gridLayout(columns:2, rows: json.keySet().size() + 2)
-            label(text: "thing")
-            label()
-            json.keySet().each { key ->
-                label(text: key)
-                if(json.get(key) instanceof Map) {
-                    label(text: "subobject")
-                } else {
-                    textField(id: key, text:json.get(key)).document.addDocumentListener(
-                            [insertUpdate: {e ->
-                                println "${e.getDocument().getText(0, e.getDocument().getLength())} ::: ${json.get(key)}"
-                                if(!sb."$key".getText().equals(json.get(key).toString())) {
-                                    sb."$key".background = java.awt.Color.ORANGE
-                                }else {
-                                    sb."$key".background = java.awt.Color.WHITE
-                                }
-                            },
-                            removeUpdate: { e ->
-                                println "${e.getDocument().getText(0, e.getDocument().getLength())} ::: ${json.get(key)}"
-                                if(!sb."$key".getText().equals(json.get(key).toString())) {
-                                    sb."$key".background = java.awt.Color.ORANGE
-                                }else {
-                                    sb."$key".background = java.awt.Color.WHITE
-                                }
-                            },
-                            changedUpdate: {}] as DocumentListener)
+            hbox() {
+                panel() {
+                    gridLayout(cols: 2, rows:0)
+                    label(text: "Name of the function to be created:")
+                    textField(id: "functionName")
+                    label(text: "Fields to change:")
+                    label()
+                    json.keySet().each { key ->
+                        label(text: key)
+                        if (json.get(key) instanceof Map) {
+                            label(text: "subobject")
+                        } else {
+                            checkBox(id: key)
+                        }
+                    }
+                    button(defaultButton: true, text: "Save", actionPerformed: {
+                        def edits = []
+                        json.keySet().each {
+                            if (frame."$it".isSelected()) {
+                                edits << it
+                            }
+                        }
+                        println(edits)
+                        StringBuilder sb = new StringBuilder("void ${frame.functionName.getText()}(")
+                        edits.each { sb.append("$it, ")}
+                        sb.replace(sb.length() - 2, sb.length(), ") {\n")
+                        edits.each {
+                            sb.append("\tjson.$it = $it\n")
+                        }
+                        sb.append("}")
+                        frame.output.text = sb.toString()
+                    })
+                }
+                vbox() {
+                    label(text: "Copy the text below into the $template.title template file", horizontalTextPosition: JLabel.CENTER)
+                    textArea(id: "output", editable: false, size: new Dimension(200, 200))
                 }
             }
-            button(defaultButton: true, text:"Save", actionPerformed: {
-                def edits = [:]
-                json.keySet().each {
-                    println "${sb."$it".getText()} ::: ${json.get(it)} ::: ${!sb."$it".getText().equals(json.get(it).toString())} "
-                    if(!sb."$it".getText().equals(json.get(it).toString())) {
-                        edits << [(it):sb."$it".getText()]
-                    }
-                }
-                println(edits)
-            })
         }
     }
 

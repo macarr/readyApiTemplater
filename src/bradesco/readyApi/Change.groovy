@@ -27,9 +27,15 @@ class Change {
      * @return the original template with changes applied
      */
     String apply() {
-        template.escaped = new JsonBuilder(json).toString()
+        template.escaped = new JsonBuilder(json).toPrettyString()
         TemplateProcessor.restoreProperties(template)
         return template.body
+    }
+
+    void theseFields(Map replacements) {
+        replacements.keySet().each {
+            json."$it" = replacements.get(it)
+        }
     }
 
 }

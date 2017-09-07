@@ -54,11 +54,6 @@ class PostLogin extends Template {
             json.latitude = latitude
             json.longitude = longitude
         }
-
-        void deviceId(String deviceId) {
-            json.device.deviceId = deviceId
-        }
     }
-
 }
 

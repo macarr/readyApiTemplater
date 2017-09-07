@@ -12,7 +12,7 @@ class TemplateProcessor {
 
         //replace all ${expression} with "${expression}" so that we end up with valid JSON
         for(def i=0; i<text.length(); i++) {
-            if(text[i] == '$' && text[i+1] == '{') {
+            if(text[i] == '$' && text[i+1] == '{' && text[i-1] != '"') {
                 def end = text.indexOf('}', i)
                 if(end == -1) {
                     println("\${ with no matching close bracket")
@@ -51,6 +51,43 @@ class TemplateProcessor {
             }
         }
         template.body = text
+    }
+
+    static void createTemplateClassFile(String name, File templateFile) {
+        Template template = new Template()
+        template.load templateFile
+        def classStructure =
+"""package bradesco.readyApi.templates
+
+import bradesco.readyApi.Change
+import bradesco.readyApi.Template
+import bradesco.readyApi.TemplateLoader
+
+class $name extends Template {
+
+    ${name}Change change
+    File templateFile
+    def templateName = "$template.name"
+
+    ${name}() {
+        templateFile = TemplateLoader.fetch(templateName)
+        load(templateFile)
+        this.change = new ${name}Change(this)
+    }
+
+    class ${name}Change extends Change {
+        ${name}Change(Template template) {
+            super(template)
+        }
+        
+        /************************************************
+        * Put new change functions beneath this comment *
+        ************************************************/
+
+    }
+
+}"""
+        println classStructure
     }
 
 }
