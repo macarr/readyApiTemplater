@@ -10,7 +10,7 @@ class Change {
      */
     Template template
     /**
-     * The current JSON representation of the tokenized template, including all changes applied
+     * The current JSON representation of the escaped template, including all changes applied
      * by this Change object
      */
     def json
@@ -18,8 +18,8 @@ class Change {
     Change(Template template) {
         this.template = template
         JsonSlurper jsonSlurper = new JsonSlurper()
-        TemplateProcessor.tokenize(template)
-        json = jsonSlurper.parseText(template.tokenized)
+        TemplateProcessor.escapeProperties(template)
+        json = jsonSlurper.parseText(template.escaped)
     }
 
     /**
@@ -27,23 +27,9 @@ class Change {
      * @return the original template with changes applied
      */
     String apply() {
-        template.tokenized = new JsonBuilder(json).toString()
-        TemplateProcessor.deTokenize(template)
+        template.escaped = new JsonBuilder(json).toString()
+        TemplateProcessor.restoreProperties(template)
         return template.body
-    }
-
-    /**
-     * Replace a json field with a property token that will be replaced with a
-     * ReadyAPI property when the changes are applied
-     * @param key the json key to replace
-     * @param propertyName the property to replace the value with
-     */
-    void keyToProperty(String key, String propertyName) {
-        def count = template.tokensmap.size()
-        def token = '$$token' + count + '$$'
-        json."$key" = token
-        def property = '${' + propertyName + '}'
-        template.tokensmap << [(token):property]
     }
 
 }

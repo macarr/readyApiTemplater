@@ -4,6 +4,7 @@ import bradesco.readyApi.TemplateViewer
 import bradesco.readyApi.templates.LoginDeviceJsonTemplate
 import bradesco.readyApi.templates.PostLoginTemplate
 import bradesco.readyApi.templates.PostVaquinha
+import junit.framework.TestCase
 
 def cpf = "88888888888"
 def password = "88888888888"
@@ -46,9 +47,10 @@ output = deviceJsonTemplate.change.apply()
 println "Output:::\t\t$output"
 
 PostVaquinha vaquinha = new PostVaquinha()
-vaquinha.change.keyToProperty("amount", "#TestCase#amount")
-println vaquinha.change.json
-println vaquinha.change.apply()
+println "Original:::\t$vaquinha.body"
+vaquinha.change.amount('${#TestCase#amount}')
+output = vaquinha.change.apply()
+println "Output:::\t\t$output"
 
 //Generic Change Test
 

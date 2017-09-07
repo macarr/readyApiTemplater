@@ -19,14 +19,10 @@ class Template {
      */
     String body
     /**
-     * The text body of this template, with ReadyAPI properties replaced with property tokens
+     * The text body of this template, with ReadyAPI properties escaped
      * (e.g. ${propertyname} ==> $$token0$$)
      */
-    String tokenized
-    /**
-     * The map of property tokens to ReadyAPI property names
-     */
-    Map tokensmap
+    String escaped
 
     /**
      * Load this template with the data from its source file
@@ -50,15 +46,5 @@ class Template {
             }
         }
         body = sb.toString()
-//        println "Name: $name"
-//        println "Body: $body"
-    }
-
-    /**
-     * Revert this template to its detokenized form
-     * @return
-     */
-    String build() {
-        TemplateProcessor.deTokenize(this)
     }
 }
