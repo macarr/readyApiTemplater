@@ -11,6 +11,9 @@ import java.awt.Dimension
 
 class TemplateViewer {
 
+    /**
+     * Display a Template viewer
+     */
     static void view() {
         def templates = TemplateLoader.loadTemplates(TemplateLoader.getTemplateFiles())
         def templateNames = templates.collect { it.name }
@@ -54,6 +57,10 @@ class TemplateViewer {
 
     }
 
+    /**
+     * Unsupported
+     * @param template
+     */
     static void createChange(Template template) {
         Change change = new Change(template)
         def editMap = [:]
@@ -107,6 +114,10 @@ class TemplateViewer {
         }
     }
 
+    /**
+     * Unsupported
+     * @return
+     */
     static File pick() {
         def templateNames = TemplateLoader.templatesMap.keySet().asList()
         def templateKey = null

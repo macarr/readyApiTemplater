@@ -2,6 +2,11 @@ package bradesco.readyApi
 
 class TemplateProcessor {
 
+    /**
+     * Tokenize a template, replacing ReadyAPI properties with property tokens in order
+     * to create well-formed JSON
+     * @param template the template to tokenize
+     */
     static void tokenize(Template template) {
         def count = 0
         def text = template.body
@@ -28,6 +33,12 @@ class TemplateProcessor {
         template.tokensmap = tokensMap
     }
 
+    /**
+     * Detokenize a template, replacing property tokens with ReadyAPI properties so that
+     * it can be used as a ReadyAPI request object. The template will most likely no
+     * longer be valid JSON.
+     * @param template The template to detokenize
+     */
     static void deTokenize(Template template) {
         def text = template.tokenized
         template.tokensmap.each {
