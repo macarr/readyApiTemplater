@@ -1,13 +1,10 @@
 package bradesco.readyApi
 
 import groovy.swing.SwingBuilder
-import org.apache.tools.ant.taskdefs.Java
 
 import javax.swing.JFrame
 import javax.swing.JLabel
-import javax.swing.JPanel
 import javax.swing.ListSelectionModel
-import javax.swing.event.DocumentListener
 import java.awt.Dimension
 
 class TemplateViewer {
