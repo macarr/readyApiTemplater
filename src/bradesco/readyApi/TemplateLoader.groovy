@@ -14,7 +14,7 @@ class TemplateLoader {
      */
     static List<File> getTemplateFiles() {
         def templates = []
-        def dir = new File('../resources')
+        def dir = new File('./resources')
         dir.eachFile { file ->
             if(file.name.endsWith('.template')) {
 //                println "Loaded file $file.name"
