@@ -23,6 +23,7 @@ class PostLogin extends Template {
     }
 
     class PostLoginChange extends Change {
+
         PostLoginChange(Template template) {
             super(template)
         }
@@ -43,6 +44,11 @@ class PostLogin extends Template {
          */
         void riskScore(int riskScore) {
             json.riskScore = riskScore
+        }
+
+        void changeRiskScoreAndLatitude(riskScore, latitude) {
+            json.riskScore = riskScore
+            json.latitude = latitude
         }
 
         /**

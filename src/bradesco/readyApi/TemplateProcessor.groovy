@@ -87,7 +87,7 @@ class $name extends Template {
     }
 
 }"""
-        println classStructure
+        TemplateViewer.showClass(name, classStructure)
     }
 
 }

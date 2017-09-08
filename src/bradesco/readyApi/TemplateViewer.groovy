@@ -124,7 +124,8 @@ class TemplateViewer {
                     resizable: true,
                     locationRelativeTo: null,
                     pack: true,
-                    show: true
+                    show: true,
+                    defaultCloseOperation: JFrame.DISPOSE_ON_CLOSE
             ) {
                 vbox { // Put everything below each other
                     label(text: "Template Name")
@@ -141,5 +142,25 @@ class TemplateViewer {
 //        println templateKey[0].getClass()
 //        println(templateKey[0])
         return TemplateLoader.fetch(templateKey[0].toString())
+    }
+
+    static void showClass(String name, String classStructure) {
+        new SwingBuilder().edt {
+            dialog(modal: true,
+                    title: 'Class structure',
+                    alwaysOnTop: true,
+                    resizable: true,
+                    locationRelativeTo: null,
+                    pack: true,
+                    show: true,
+                    defaultCloseOperation: JFrame.DISPOSE_ON_CLOSE
+            ) {
+                vbox { // Put everything below each other
+                    label(text: "Place this in bradesco/readyApi/templates/${name}.groovy")
+                    textArea(text: classStructure, size: new Dimension(400,400))
+                    label(text: "Remember to restart ReadyAPI to use the new file!")
+                }
+            }
+        }
     }
 }
