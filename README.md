@@ -14,12 +14,16 @@ TEMPLATE CLASS FILE STORAGE LOCATION:
 
 INSTALLATION INSTRUCTIONS:
 
-checkout project:
+checkout project to the location of your choice:
 git clone https://github.com/macarr/readyApiTemplater.git
+
+close readyAPI
 
 copy readyApiTemplater/src/bradesco folder to {SCRIPT STORAGE LOCATION} (above)
 
 copy readyApiTemplater/resources folder to {TEMPLATE FILE STORAGE LOCATION} (above)
+
+open readyAPI
 
 =====================================================================================
 
