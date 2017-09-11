@@ -53,8 +53,7 @@ class TemplateProcessor {
         template.body = text
     }
 
-    static void createTemplateClassFile(String name, String fileName) {
-        File templateFile = new File(fileName)
+    static void createTemplateClassFile(String name, File templateFile) {
         Template template = new Template()
         template.load templateFile
         def classStructure =

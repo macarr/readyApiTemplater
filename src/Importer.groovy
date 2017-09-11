@@ -15,7 +15,7 @@ def deviceId = "FV92J3N847YG9W873452GHJ9"
     Ideally this method will always be run in the project setup script
 */
 TemplateLoader.generateTemplateMap()
-TemplateProcessor.createTemplateClassFile("PutApplications", TemplateViewer.pick().path)
+TemplateProcessor.createTemplateClassFile("PutApplications", TemplateViewer.pick())
 
 //TemplateViewer.createChange(new PostLogin())
 //Change Creator Test
