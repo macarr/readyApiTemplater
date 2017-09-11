@@ -76,6 +76,8 @@ TemplateViewer.createChange(template)
 This will be used to create a change function, which you will then paste into the
 template groovy file and then use in your groovy scripts to to change template data)
 
-=====================================================================================
+#Use In Groovy Scripting
+
+TBC
 
 For more details on how these tools work, please see readyApiTemplater\output\index.html
