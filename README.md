@@ -41,7 +41,8 @@ git clone https://github.com/macarr/readyApiTemplater.git
 <h1>READYAPI SETUP</h1>
 
 Create a new Test Suite and Test Case named "Test Utilities" (or your choice of alternative). 
-This will be where your standalone test tools are located.
+This will be where your standalone test tools are located. These are not meant to be run as a
+complete test suite/case. Instead, you should run scripts individually as you require them.
 
 <h3>SETUP STEP</h3>
 
@@ -71,7 +72,7 @@ TemplateProcessor.createTemplateClassFile(TemplateViewer.pick())
 
 This will be used to create new template groovy file for use in test setup. When you complete the
 process, the program will attempt to create the new groovy file in the same location as the rest
-of the template files. If it cannot, it will show all the data you need to do so yourself in an
+of the template .groovy files. If it cannot, it will show all the data you need to do so yourself in an
 output dialog window.
 
 <h3>CREATE NEW CHANGE FUNCTION STEP</h3>
