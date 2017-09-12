@@ -53,7 +53,7 @@ import bradesco.readyApi.*
 /*
     Always run these methods before testing
 */
-TemplateProcessor.templateLocation = "${context.expand('${projectDir}')}\\next-soapui\\scripts\\bradesco\\readyApi\\templates"
+TemplateLoader.templateLocation = "${context.expand('${projectDir}')}\\next-soapui\\scripts\\bradesco\\readyApi\\templates"
 TemplateLoader.generateTemplateMap()
 ```
 
@@ -104,11 +104,29 @@ in your currently configured templates directory
 
 <h1>Use In Groovy Scripting</h1>
 
-TBC
+<h2>Setting up a Test Case</h2>
+ 
 
 <h1>Troubleshooting</h1>
 
-TBC
+<h3>FileNotFoundException</h3>
+
+ReadyApi doesn't know where to find your template files. Run the "Load Script Data" script to
+set the location.
+
+<h3>NullPointerException when trying to see template files</h3>
+
+ReadyApi hasn't loaded your templates into memory yet. Run the "Load Script Data" script to load 
+the data into memory
+
+<h3>MissingPropertyException</h3>
+
+ReadyApi hasn't imported the groovy code required to run your script. Make sure your script has
+the following code at the top:
+```
+import bradesco.readyApi.*
+import bradesco.readyApi.templates.*
+```
 
 <h1>GroovyDoc</h1>
 
