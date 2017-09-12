@@ -1,0 +1,3 @@
+GBL_CONTACTS_POST_NO_ACCOUNT_NO_CPF
+Global POST & PUT /contacts (No Account No CPF)
+{ "name": "UK1 - Test", "surname": "surname", "phoneNumber": "14163330333", "areaCode": "103", "countryCode": "133", "email": "contact02@capco.com"}

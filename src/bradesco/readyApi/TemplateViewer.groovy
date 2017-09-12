@@ -1,5 +1,7 @@
 package bradesco.readyApi
 
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
 import groovy.swing.SwingBuilder
 
 import javax.swing.JFrame
@@ -37,13 +39,15 @@ class TemplateViewer {
                                         size: new Dimension(100, 1))
                             }
                             button(defaultButton: true, text: 'Select', actionPerformed: {
-                                def template = templateMap.get(templateName.selectedValuesList[0])
-                                templateView.setText(template ? template.body : "")
+                                Template template = templateMap.get(templateName.selectedValuesList[0])
+                                templateView.setText(template ? "${template.title}\n\n${template.body}": "")
                             })
                         }
                         vbox {
                             label(text: "Template Text")
-                            textArea(id: 'templateView', lineWrap: true, size: new Dimension(200, 1))
+                            scrollPane {
+                                textArea(id: 'templateView', lineWrap: true, size: new Dimension(500, 1))
+                            }
                         }
                     }
                 }
@@ -64,8 +68,7 @@ class TemplateViewer {
                 resizable: true,
                 locationRelativeTo: null,
                 pack: true,
-                show: true,
-                defaultCloseOperation: JFrame.EXIT_ON_CLOSE) {
+                show: true) {
             hbox() {
                 panel() {
                     gridLayout(cols: 2, rows:0)
@@ -116,7 +119,7 @@ class TemplateViewer {
         def templateKey = null
         new SwingBuilder().edt {
             dialog(modal: true,
-                    title: 'Enter program name',
+                    title: 'Pick a Template File',
                     alwaysOnTop: true,
                     resizable: true,
                     locationRelativeTo: null,
@@ -125,7 +128,7 @@ class TemplateViewer {
                     defaultCloseOperation: JFrame.DISPOSE_ON_CLOSE
             ) {
                 vbox { // Put everything below each other
-                    label(text: "Template Name")
+                    label(text: "Choose a template File")
                     scrollPane {
                         list(id: 'templateName', items: templateNames, visibleRowCount: 10)
                     }
@@ -152,7 +155,8 @@ class TemplateViewer {
                     show: true,
                     defaultCloseOperation: JFrame.DISPOSE_ON_CLOSE
             ) {
-                vbox { // Put everything below each other
+                vbox{ // Put everything below each other
+                    label(text: "File exists, please manually overwrite.")
                     label(text: "Place this in bradesco/readyApi/templates/${name}.groovy")
                     textArea(text: classStructure, size: new Dimension(400,400))
                     label(text: "Remember to restart ReadyAPI to use the new file!")

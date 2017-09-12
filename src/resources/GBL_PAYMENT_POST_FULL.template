@@ -1,0 +1,3 @@
+GBL_PAYMENT_POST_FULL
+Global POST /Payment (FULL)
+{ "barcode":"85830000000968002702003110876760001802016029", "amount":3500, "description":"breakfast bill", "paymentDate":"${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_TODAY}", "accountType":"CURRENT", "cpfCnpjBeneficiary": "45846554806", "cpfCnpjPayer": "66260062311"}

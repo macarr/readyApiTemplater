@@ -1,0 +1,3 @@
+GBL_BUDGETS_TXN_CAT_ID_POST_DEFAULT
+Global POST /budgets/transactionCategoryID (Default)
+{amount:"100"}

@@ -1,0 +1,3 @@
+GBL_CAMPAIGN_PUT_DEFAULT
+Global PUT /Campaign (DEFAULT)
+{   "businessID": "BUSINESS_ID",   "description": "DESCRIBPTION OF THE BUSINESS",   "name": "NAME OF THE CAMPAIGN",   "notificationMsg": "NOTIFICATION FOR CAMPAIGN",   "version": 0 }

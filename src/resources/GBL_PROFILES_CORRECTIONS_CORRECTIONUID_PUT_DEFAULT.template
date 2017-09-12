@@ -1,0 +1,3 @@
+GBL_PROFILES_CORRECTIONS_CORRECTIONUID_PUT_DEFAULT
+Global PUT /profiles/corrections/correctionUid (DEFAULT)
+{ "correctionComments": "Low resolution",  "correctionStatus": "1"}

@@ -3,21 +3,22 @@ package bradesco.readyApi.templates
 import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
+import groovy.json.JsonSlurper
 
-class PutApplications extends Template {
+class PutApplication extends Template {
 
-    PutApplicationsChange change
+    PutApplicationChange change
     File templateFile
-    def templateName = "put_application"
+    def templateName = "GBL_APPLICATION_PUT_FULL"
 
-    PutApplications() {
+    PutApplication() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new PutApplicationsChange(this)
+        this.change = new PutApplicationChange(this)
     }
 
-    class PutApplicationsChange extends Change {
-        PutApplicationsChange(Template template) {
+    class PutApplicationChange extends Change {
+        PutApplicationChange(Template template) {
             super(template)
         }
 
@@ -35,6 +36,16 @@ class PutApplications extends Template {
 
         void addPhone(String areaCode, String countryCode, String number, String type, String primaryPhoneInd) {
             json.phoneNumbers << [areaCode:areaCode, countryCode:countryCode, phoneNumber:number, phoneType: type, primaryPhoneInd:primaryPhoneInd]
+        }
+
+        void toNoNestedJsonDefault() {
+            JsonSlurper slurper = new JsonSlurper()
+            slurper.parseText(template.escaped)
+            json.addresses = null
+            json.customerAssets = null
+            json.fatcaResponses = null
+            json.phoneNumbers = null
+            json.proposal = null
         }
     }
 

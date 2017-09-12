@@ -1,0 +1,3 @@
+GBL_ASSET_BLOCK_DEFAULT
+Global Asset BLOCK Default
+{ "assetQuantity": 1, "assetTypeId": 2, "assetValueAmt": 10000 }

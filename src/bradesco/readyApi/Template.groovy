@@ -43,7 +43,7 @@ class Template {
                     getTitle = false
                     title = line
                 } else {
-                    sb.append(line)
+                    sb.append(line + "\n")
                 }
             }
         } catch (NullPointerException e) {

@@ -1,0 +1,3 @@
+GBL_CAMPAIGN_POST_DEFAULT
+Global POST /Campaign (DEFAULT)
+{   "businessID": "BUSINESS_ID",   "description": "DESCRIBPTION OF THE BUSINESS",   "name": "NAME OF THE CAMPAIGN",   "notificationMsg": "NOTIFICATION FOR CAMPAIGN" }

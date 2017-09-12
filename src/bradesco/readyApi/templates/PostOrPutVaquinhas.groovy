@@ -4,25 +4,26 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
-/**
- * Template for POST /vaquinha requests
- */
-class PostVaquinha extends Template {
+class PostOrPutVaquinhas extends Template {
 
-    PostVaquinhaChange change
+    PostOrPutVaquinhasChange change
     File templateFile
-    def templateName = "post_vaquinha"
+    def templateName = "GBL_VAQUINHAS_POST_DEFAULT"
 
-    PostVaquinha() {
+    PostOrPutVaquinhas() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new PostVaquinhaChange(this)
+        this.change = new PostOrPutVaquinhasChange(this)
     }
 
-    class PostVaquinhaChange extends Change {
-        PostVaquinhaChange(Template template) {
+    class PostOrPutVaquinhasChange extends Change {
+        PostOrPutVaquinhasChange(Template template) {
             super(template)
         }
+        
+        /************************************************
+        * Put new change functions beneath this comment *
+        ************************************************/
 
         /**
          * Change the amount of the vaquinha
@@ -69,4 +70,3 @@ class PostVaquinha extends Template {
     }
 
 }
-

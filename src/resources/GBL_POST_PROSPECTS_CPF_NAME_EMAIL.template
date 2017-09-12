@@ -1,0 +1,3 @@
+GBL_POST_PROSPECTS_CPF_NAME_EMAIL
+Global POST /Prospects (CPF, NAME, EMAIL)
+{ "cpf":"78989067845", "prospectName":"Mark Antony", "email":"mark.antony@capco.com", "category":"INFLUENCER" }

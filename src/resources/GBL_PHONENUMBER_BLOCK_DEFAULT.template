@@ -1,0 +1,3 @@
+GBL_PHONENUMBER_BLOCK_DEFAULT
+Global Phone Number Block (Default)
+{ "countryCode": 55, "areaCode": 11, "phoneNumber": 564347801, "phoneType": 1, "primaryPhoneInd": "Y" }

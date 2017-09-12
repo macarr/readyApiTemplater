@@ -1,0 +1,3 @@
+GBL_NEXTTRANSACTIONS_TRANSACTIONID_PUT_DEFAULT
+Global PUT /nextTransactions/TransactionID (DEFAULT)
+{ "category": "CASA", "description": "transaction 1" }

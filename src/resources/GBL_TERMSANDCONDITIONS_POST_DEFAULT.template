@@ -1,0 +1,3 @@
+GBL_TERMSANDCONDITIONS_POST_DEFAULT
+Global POST /termsAndConditions/(DEFAULT)
+{ "productUID": "4", "vaquinhaParticipant":"", "html": "PGh0bWw+VGhpcyBpcyBhIHRlc3QgY3JlYXRpbmcgYSBuZXcgVCZDPC9odG1sPg==", "pdf": "VGhpcyBpcyBhIHRlc3QgY3JlYXRpbmcgYSBuZXcgVCZD" }

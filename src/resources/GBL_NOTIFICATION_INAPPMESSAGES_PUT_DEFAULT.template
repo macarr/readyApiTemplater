@@ -1,0 +1,3 @@
+GBL_NOTIFICATION_INAPPMESSAGES_PUT_DEFAULT
+Global PUT /notification/inappMessages (DEFAULT)
+{ "messages": [ {"uniqueID": 8, "status": "READ"} ] }

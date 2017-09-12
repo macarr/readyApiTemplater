@@ -1,6 +1,10 @@
 package bradesco.readyApi
 
+import javax.swing.JOptionPane
+
 class TemplateProcessor {
+
+    static String templateLocation = null
 
     /**
      * Tokenize a template, replacing ReadyAPI properties with property tokens in order
@@ -53,9 +57,24 @@ class TemplateProcessor {
         template.body = text
     }
 
-    static void createTemplateClassFile(String name, File templateFile) {
+    static void createTemplateClassFile(File templateFile) {
+        if(!templateLocation) {
+            throw new RuntimeException("Template file location is not yet defined! Did you run the setup script?")
+        }
         Template template = new Template()
         template.load templateFile
+        String name = template.name
+        boolean validName = false
+        while(!validName) {
+            name = JOptionPane.showInputDialog(null, "Choose a name for the template loaded from ${templateFile}." +
+                    "\nLetters and numbers only, using camel case (ThisIsHowToWriteInCamelCase)" +
+                    "\nExample: PostDeviceRegistrationDocuments, for a template for POST /deviceRegistration/documents", name)
+            if(name.matches("[a-zA-Z0-9]+")) {
+                validName = true
+            } else {
+                JOptionPane.showMessageDialog(null, "Letters and Numbers only, please.", "Invalid Input", JOptionPane.ERROR_MESSAGE)
+            }
+        }
         def classStructure =
 """package bradesco.readyApi.templates
 
@@ -87,7 +106,20 @@ class $name extends Template {
     }
 
 }"""
-        TemplateViewer.showClass(name, classStructure)
+        File outFile = new File("${templateLocation}\\${name}.groovy")
+        println outFile.path
+        File directory = new File(templateLocation)
+        if(directory.exists() && directory.canWrite()) {
+            if(!outFile.exists()) {
+                outFile.text = classStructure
+                JOptionPane.showMessageDialog(null, "File created at $outFile", "File Created", JOptionPane.INFORMATION_MESSAGE)
+            } else if (outFile.exists()) {
+                TemplateViewer.showClass(name, classStructure)
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Directory does not exist, or file could not be created", "Error!", JOptionPane.ERROR_MESSAGE)
+        }
+
     }
 
 }

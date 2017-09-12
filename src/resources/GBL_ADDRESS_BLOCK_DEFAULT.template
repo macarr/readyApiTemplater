@@ -1,0 +1,3 @@
+GBL_ADDRESS_BLOCK_DEFAULT
+Global Address Block (Default)
+{ "addressAdditionalInfo": "QAUpdateAppAdditionalInfo", "addressType": 1, "cityId": 79, "mailingAddressInd": "Y", "neighbourhood": "QAUpdateAppNeigh", "postalCode": 23432123, "stateCd": "RJ", "streetName": "Springfield", "streetNumber": "1001" }

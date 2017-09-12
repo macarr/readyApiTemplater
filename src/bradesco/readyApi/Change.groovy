@@ -15,6 +15,8 @@ class Change {
      */
     def json
 
+    private JsonSlurper slurper = new JsonSlurper()
+
     Change(Template template) {
         this.template = template
         JsonSlurper jsonSlurper = new JsonSlurper()
@@ -36,6 +38,10 @@ class Change {
         replacements.keySet().each {
             json."$it" = replacements.get(it)
         }
+    }
+
+    void reset() {
+        json = slurper.parseText(template.escaped)
     }
 
 }

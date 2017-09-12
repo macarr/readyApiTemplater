@@ -1,0 +1,3 @@
+GBL_INVITATIONS_SHAREABLEINVITATION_POST_DEFAULT
+Global POST /invitations/shareableInvitation (Default)
+{ "inviteeFirstName": "Judy" }

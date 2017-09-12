@@ -1,0 +1,3 @@
+GBL_ACCOUNT_BLOCK_DEFAULT
+Global Account Block (Default)
+{ "accountNumber": "243523", "bank": 987,  "branch": 876  , "fullLegalName": "Grupo José de Mello, Conglomerate", "isRegistered": false }

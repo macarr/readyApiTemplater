@@ -1,0 +1,3 @@
+GBL_ACCOUNTS_EXTERNALACCOUNTS_POST_DEFAULT
+Global POST /accounts/externalAccounts (DEFAULT)
+{ "accountNumber":123457, "bankId": 234, "branch": 2345 }

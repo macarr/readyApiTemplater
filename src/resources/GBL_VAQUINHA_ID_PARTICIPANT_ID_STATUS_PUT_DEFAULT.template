@@ -1,0 +1,3 @@
+GBL_VAQUINHA_ID_PARTICIPANT_ID_STATUS_PUT_DEFAULT
+Global PUT /vaquinhas/{vaquinhaid}/participant/{participantId}/status (PAID)
+{ "status" : "PAID" }

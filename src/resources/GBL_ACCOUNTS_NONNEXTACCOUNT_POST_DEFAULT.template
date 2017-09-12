@@ -1,0 +1,3 @@
+GBL_ACCOUNTS_NONNEXTACCOUNT_POST_DEFAULT
+Global POST /accounts/nonExtAccount (DEFAULT)
+{ "accountNumber":123456, "bankId": 123, "branch": 2345 }

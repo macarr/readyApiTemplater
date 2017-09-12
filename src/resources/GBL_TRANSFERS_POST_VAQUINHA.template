@@ -1,0 +1,3 @@
+GBL_TRANSFERS_POST_VAQUINHA
+POST /transfers (Vaquinha Transfer) (use relative dates set to today)
+{ "accountType": "0", "amount": 10.00, "description": "Submit Vaquinha Payment", "modality": "INT", "purpose": "0", "recipientAccountType": 0, "transferDate": "${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_TODAY}", "vaquinhaId": 22 }

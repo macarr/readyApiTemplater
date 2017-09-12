@@ -1,0 +1,3 @@
+GBL_PROSPECTS_CPF_PUT_DEFAULT
+Global PUT /Prospects/{CPF}
+{  "status" : "ENABLED",  "reason" : "Good client"}

@@ -1,0 +1,3 @@
+GBL_CREDITCARDS_REPLACEMENTS_PUT_DEFAULT
+Global PUT /creditCards/replacements (DEFAULT)
+{ "reasonCode" : 2, "customerName":"Natallia" }

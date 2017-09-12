@@ -1,0 +1,3 @@
+GBL_OTPTOKEN_INITIALIZATION_POST_DEFAULT
+Global POST /otpToken/initialization (DEFAULT)
+{  "cpf": "45846554806",  "dna": "dna",  "cellphoneNumber": "12345678",  "user": "Joe",  "systemIdentification": "next",  "description": "next user"}

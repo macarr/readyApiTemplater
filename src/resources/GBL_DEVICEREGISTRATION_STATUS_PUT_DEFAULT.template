@@ -1,0 +1,3 @@
+GBL_DEVICEREGISTRATION_STATUS_PUT_DEFAULT
+Global PUT /deviceRegistration/Status (DEFAULT)
+{ "deviceRegistrationId": 1, "status": "ACTIVE" }

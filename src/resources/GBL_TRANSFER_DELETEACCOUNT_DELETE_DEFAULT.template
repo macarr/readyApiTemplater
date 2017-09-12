@@ -1,0 +1,3 @@
+GBL_TRANSFER_DELETEACCOUNT_DELETE_DEFAULT
+Global DELETE /transfers/deleteAccount (DEFAULT)
+{ "branch":11, "beneficiaryBranch":212, "beneficiaryBank":239, "account":345, "beneficiaryAccount":1234567, "cpfCnpj":"12345678912", "beneficiaryName":"beneficiary", "product":100 }

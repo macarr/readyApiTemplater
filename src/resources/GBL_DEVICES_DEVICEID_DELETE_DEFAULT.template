@@ -1,0 +1,3 @@
+GBL_DEVICES_DEVICEID_DELETE_DEFAULT
+Global DELETE /devices/deviceID (DEFAULT)
+{ "cellphoneNumber": 9924553, "cpf": "66260062311", "description": "This is description", "dna": "dna444", "systemIdentification": "string_SYS_ID", "user": "Tim" }

@@ -1,0 +1,3 @@
+GBL_GOALS_SIGNATURE_POST_JUST_TC
+Global POST /goals/signature (Just T&C)
+{ "termsAndConditionsUID": 20 }

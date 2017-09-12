@@ -1,0 +1,3 @@
+GBL_PREREGISTRATIONS_ONBOARDINGSTATUS_POST_APPROVED
+Global POST /preregistrations/onboardingstatus (APPROVED)
+{ "applicationStatus": "4","deptResponsibleId": 21,"userResponsibleId": "Tim"}

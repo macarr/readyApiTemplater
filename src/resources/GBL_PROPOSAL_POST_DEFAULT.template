@@ -1,0 +1,3 @@
+GBL_PROPOSAL_POST_DEFAULT
+Global POST /proposal/ (DEFAULT)
+{ "approvedCreditAmount": 1000.99, "listOfproducts": [${LOCAL_JSON_TEMPLATES#TC_PRODUCT_BLOCK_DEFAULT}], "planAmount": 10.99, "planChes": 1, "planCode": 2, "planEndDate": "${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_PLUS_1_YEAR}", "planLime": 1, "planStartDate": "${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_6_MONTH}", "planTariff": 1, "supportCredit": "Y", "planName": "Basic Plan", "planStatus": 0}

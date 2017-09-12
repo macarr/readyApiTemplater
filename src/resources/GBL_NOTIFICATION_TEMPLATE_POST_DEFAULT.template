@@ -1,0 +1,3 @@
+GBL_NOTIFICATION_TEMPLATE_POST_DEFAULT
+Global POST & PUT /notification/template (DEFAULT)
+{ "templateId" : 822, "channel":1, "eventId":6", "enabled" : "true", "templateSubject" : "Money Management notification", "templateText" : "This is a newly created message for Money Management notification" }

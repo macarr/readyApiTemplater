@@ -1,0 +1,3 @@
+GBL_FACTARESPONSE_BLOCK_DEFAULT
+Global FACTA Response Block Default
+{ "countryId": 1, "fatcaQuestionId": 1, "reasonMissingNifId": 1 }

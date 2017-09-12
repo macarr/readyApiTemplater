@@ -1,0 +1,3 @@
+GBL_VAQUINHAS_ID_PARTICIPANTS_PUT_DEFAULT
+Global PUT /vaqunihas/{vaquinhaiD}/participants (DEFAULT)
+{ "contactIds": [99] }

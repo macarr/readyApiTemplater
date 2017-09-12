@@ -1,0 +1,3 @@
+GBL_INVITATIONS_SELF_POST_NO_PHONE
+Global POST /invitations/self (No Phone)
+{ "cpf" : "92159012645", "prospectName" : "Mark Antony", "email" : "mark.antony@capco.com", "category" : "OTHER", "origin" : "SITE", "smsPermission": true}

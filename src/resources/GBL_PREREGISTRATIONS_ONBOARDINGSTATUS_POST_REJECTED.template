@@ -1,0 +1,3 @@
+GBL_PREREGISTRATIONS_ONBOARDINGSTATUS_POST_REJECTED
+Global POST /preregistrations/onboardingStatus (REJECTED)
+{ "applicationStatus": "2", "rejectionReasonDescription": "Too Ugly","deptResponsibleId": 21,"userResponsibleId": "2"}

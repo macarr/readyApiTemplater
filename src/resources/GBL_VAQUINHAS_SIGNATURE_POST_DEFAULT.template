@@ -1,0 +1,3 @@
+GBL_VAQUINHAS_SIGNATURE_POST_DEFAULT
+POST /vaquinhas/signature (DEFAULT)
+{ "termsAndConditionsUID": 21, "vaquinhaUID": 2 }

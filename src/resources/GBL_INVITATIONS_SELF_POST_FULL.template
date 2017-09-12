@@ -1,0 +1,3 @@
+GBL_INVITATIONS_SELF_POST_FULL
+Global POST /invitations/self (FULL)
+{ "cpf" : "92159012645", "prospectName" : "Mark Antony", "email" : "mark.antony@capco.com", "category" : "OTHER", "origin" : "SITE", "smsPermission": true, "phoneNumber": 2498877,"areaCode": 434,"countryCode": 1}

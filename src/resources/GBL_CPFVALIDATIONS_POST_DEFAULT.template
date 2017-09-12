@@ -1,0 +1,3 @@
+GBL_CPFVALIDATIONS_POST_DEFAULT
+Global POST /cpfValidations (Default)
+{ "cpf": "45846554806" }

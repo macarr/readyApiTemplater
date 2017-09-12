@@ -1,0 +1,3 @@
+GBL_TRANSFERS_REGISTERACCOUNT_DEFAULT
+Global POST /transfers/registerAccount (DEFAULT)
+{ "branch":11, "beneficiaryBranch":212, "beneficiaryBank":239, "account":1234, "beneficiaryAccount":2121, "cpfCnpj":"12345678912", "midia":"517", "beneficiaryName":"beneficiary", "product":100, "beneficiaryRegisterStatusCode":1 }

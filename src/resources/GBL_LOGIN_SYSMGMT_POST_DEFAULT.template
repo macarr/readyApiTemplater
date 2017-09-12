@@ -1,0 +1,3 @@
+GBL_LOGIN_SYSMGMT_POST_DEFAULT
+Global POST /login/sysmgmt (DEFAULT)
+{ "password": "password", "agentId": 1549, "host": "testHost" }

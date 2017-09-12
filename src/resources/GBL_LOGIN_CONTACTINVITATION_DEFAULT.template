@@ -1,0 +1,3 @@
+GBL_LOGIN_CONTACTINVITATION_DEFAULT
+Global POST /login/contactInvitation (DEFAULT)
+{ "vaquinhaCode":"P2bOf0Vp", "email":"NonNEXTER2@capco.com" }

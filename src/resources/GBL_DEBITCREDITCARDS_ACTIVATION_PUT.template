@@ -1,0 +1,3 @@
+GBL_DEBITCREDITCARDS_ACTIVATION_PUT
+Global PUT /debitCreditCards/Activation (default)
+{ "cvv":"123"}
