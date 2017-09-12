@@ -1,30 +1,26 @@
 <h1>Important Information</h1>
 Please make note of the following information before proceeding with installation
 
-<h2>ReadyAPI Installation Folder</h2>
-This will be different per computer, but you will likely find it in one of the following 
-locations:
-
-C:\Program Files\SmartBear\ReadyAPI-2.1.0\
-
-C:\Program Files(x86)\SmartBear\ReadyAPI-2.1.0\bin\scripts\bradesco\readyApi
-
-C:\Program Files\SmartBear\ReadyAPI-1.8.0\bin\scripts\bradesco\readyApi
-
-C:\Program Files(x86)\SmartBear\ReadyAPI-1.8.0\bin\scripts\bradesco\readyApi
-
 <h2>Nextbank Project Location</h2>
 This is where the nextbank code and tests are checked out to. This will be different per 
 computer.
 
 <h2>Script Storage Location</h2>
-{Nextbank Project Location}\nextbank\next-integration-tests\next-soapui\scripts
+{Nextbank Project Location}\nextbank\next-integration-tests\next-soapui\scripts<br /><br />
+This is where Ready API reads external script libraries from. 
 
-<h2>Template File Storage Location</h2>
-{ReadyAPI Installation Folder}\bin\resources
+<h2>Core Groovy Code Storage Location</h2>
+{Script Storage Location}\bradesco\readyApi<br /><br />
+This is where the core Groovy code that controls the scripts is stored
 
-<h2>Template Class File Storage Location</h2>
-{Script Storage Location}\bradesco\readyApi\templates
+<h2>Groovy Template File Storage Location</h2>
+{Script Storage Location}\bradesco\readyApi\templates<br /><br />
+This is where the Groovy code that controls Templates and Template changes is stored
+
+<h2>Raw Template Storage Location</h2>
+{Groovy Template File Storage Location}\rawTemplates<br /><br />
+This is where the raw templates (the .template files) that are used to define request bodies are
+stored
 
 <h1>Installation Instructions</h1>
 
@@ -32,9 +28,12 @@ computer.
 git bash (or your git client of choice):
 
 git clone https://github.com/macarr/readyApiTemplater.git
+
+Ensure this is a location you can easily find again (e.g. C:\\, My Documents, Downloads, etc).
+The code will be checked out to {location}/readyApiTemplater/, herefore referred to as {project
+checkout location}
 <li>close readyAPI
 <li>copy readyApiTemplater/src/bradesco folder to {SCRIPT STORAGE LOCATION} (above)
-<li>copy readyApiTemplater/resources folder to {TEMPLATE FILE STORAGE LOCATION} (above)
 <li>open readyAPI
 </ol>
 
@@ -54,8 +53,8 @@ import bradesco.readyApi.*
 /*
     Always run these methods before testing
 */
-TemplateLoader.generateTemplateMap()
 TemplateProcessor.templateLocation = "${context.expand('${projectDir}')}\\next-soapui\\scripts\\bradesco\\readyApi\\templates"
+TemplateLoader.generateTemplateMap()
 ```
 
 This must be run before any testing can be performed.

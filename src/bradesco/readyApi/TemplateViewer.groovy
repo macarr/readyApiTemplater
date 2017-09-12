@@ -145,7 +145,7 @@ class TemplateViewer {
                 }
                 vbox() {
                     label(text: "<html>Copy the text below into the $template.title template file<br />" +
-                            "under ${TemplateProcessor.templateLocation}</html>", horizontalTextPosition: JLabel.CENTER)
+                            "under ${TemplateLoader.templateLocation}</html>", horizontalTextPosition: JLabel.CENTER)
                     textArea(id: "output", editable: false, size: new Dimension(200, 200))
                 }
             }

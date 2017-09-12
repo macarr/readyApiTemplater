@@ -9,12 +9,17 @@ class TemplateLoader {
     static Map<String, File> templatesMap = [:]
 
     /**
-     * @return a list of all template files in the template resources directory
-     * (probably located in C:\Program Files\SmartBear\ReadyAPI-2.1.0\bin\resources)
+     * Location of template .groovy files
+     */
+    public static String templateLocation = null
+
+    /**
+     * @return a list of all template files in the raw templates directory
+     * ({templateLocation}/rawTemplates/)
      */
     static List<File> getTemplateFiles() {
         def templates = []
-        def dir = new File('./resources')
+        def dir = new File("${templateLocation}/rawTemplates")
         dir.eachFile { file ->
             if(file.name.endsWith('.template')) {
 //                println "Loaded file $file.name"

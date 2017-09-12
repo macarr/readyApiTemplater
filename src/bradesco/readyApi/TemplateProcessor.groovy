@@ -4,8 +4,6 @@ import javax.swing.JOptionPane
 
 class TemplateProcessor {
 
-    static String templateLocation = null
-
     /**
      * Encapsulate Ready API properties in the provided template inside Strings in an attempt to
      * create well-formed JSON
@@ -67,7 +65,7 @@ class TemplateProcessor {
      * @param templateFile the .template file to ingest
      */
     static void createTemplateClassFile(File templateFile) {
-        if(!templateLocation) {
+        if(!TemplateLoader.templateLocation) {
             throw new RuntimeException("Template file location is not yet defined! Did you run the setup script?")
         }
         Template template = new Template()
@@ -115,9 +113,9 @@ class $name extends Template {
     }
 
 }"""
-        File outFile = new File("${templateLocation}\\${name}.groovy")
+        File outFile = new File("${TemplateLoader.templateLocation}\\${name}.groovy")
         println outFile.path
-        File directory = new File(templateLocation)
+        File directory = new File(TemplateLoader.templateLocation)
         if(directory.exists() && directory.canWrite()) {
             if(!outFile.exists()) {
                 outFile.text = classStructure
