@@ -54,6 +54,10 @@ class TemplateViewer {
         }
     }
 
+    /**
+     * View the provided change output in a dialog
+     * @param changeOutput the result of Change.apply()
+     */
     static void viewChange(String changeOutput) {
         new SwingBuilder().edt {
             dialog(modal: true,
@@ -74,8 +78,10 @@ class TemplateViewer {
     }
 
     /**
-     * Unsupported
-     * @param template
+     * Using the json values of the provided template, open a dialog to select values to include
+     * in a change function
+     *
+     * @param template the template to source data from
      */
     static void createChange(Template template) {
         Change change = new Change(template)
@@ -147,8 +153,10 @@ class TemplateViewer {
     }
 
     /**
-     * Unsupported
-     * @return
+     * Open a list of all template files, and return the selected file
+     *
+     * @return the file selected when the "Select" button is pressed, or null if the window is
+     * closed or the button is pressed without anything selected
      */
     static File pick() {
         def templateNames = TemplateLoader.templatesMap.keySet().asList()
@@ -180,6 +188,13 @@ class TemplateViewer {
         return TemplateLoader.fetch(templateKey[0].toString())
     }
 
+    /**
+     * Show the results of TemplateProcessor.createTemplateClassFile(), in the case that
+     * it is unable to write the file to the configured location
+     *
+     * @param name The name of the file
+     * @param classStructure the text of the class file, to be copied into {template location}/{name}.groovy
+     */
     static void showClass(String name, String classStructure) {
         new SwingBuilder().edt {
             dialog(modal: true,

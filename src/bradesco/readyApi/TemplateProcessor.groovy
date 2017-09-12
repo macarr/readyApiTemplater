@@ -7,9 +7,10 @@ class TemplateProcessor {
     static String templateLocation = null
 
     /**
-     * Tokenize a template, replacing ReadyAPI properties with property tokens in order
-     * to create well-formed JSON
-     * @param template the template to escapeProperties
+     * Encapsulate Ready API properties in the provided template inside Strings in an attempt to
+     * create well-formed JSON
+     *
+     * @param template the template to encapsulate
      */
     static void escapeProperties(Template template) {
         def text = template.body
@@ -31,10 +32,10 @@ class TemplateProcessor {
     }
 
     /**
-     * Detokenize a template, replacing property tokens with ReadyAPI properties so that
-     * it can be used as a ReadyAPI request object. The template will most likely no
-     * longer be valid JSON.
-     * @param template The template to detokenize
+     * Revert Ready API properties from strings (encapsulated by escapeProperties) to their native,
+     * invalid JSON format
+     *
+     * @param template The template to deencapsulate
      */
     static void restoreProperties(Template template) {
         def text = template.escaped
@@ -57,6 +58,13 @@ class TemplateProcessor {
         template.body = text
     }
 
+    /**
+     * Given a template file, attempt to use the definitions within to create a Groovy Template
+     * file with prefilled boilerplate code, and then attempt to store that file in the templates
+     * directory
+     *
+     * @param templateFile the .template file to ingest
+     */
     static void createTemplateClassFile(File templateFile) {
         if(!templateLocation) {
             throw new RuntimeException("Template file location is not yet defined! Did you run the setup script?")
