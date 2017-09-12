@@ -20,7 +20,7 @@ TemplateProcessor.templateLocation = './bradesco/readyApi/templates'
 /*
     View all template files
  */
-TemplateViewer.view()
+//TemplateViewer.view()
 
 /*
     Create a change method for a template
@@ -75,4 +75,5 @@ TemplateViewer.createChange(template)*/
 PostTransfers transfers = new PostTransfers()
 println "Original:::\t$transfers.body"
 transfers.change.toExternalTransferDefault()
+transfers.change.show()
 println "Output:::\t\t${transfers.change.apply()}"
