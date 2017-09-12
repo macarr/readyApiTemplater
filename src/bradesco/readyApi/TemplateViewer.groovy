@@ -4,6 +4,7 @@ import groovy.swing.SwingBuilder
 
 import javax.swing.JFrame
 import javax.swing.JLabel
+import javax.swing.JOptionPane
 import javax.swing.ListSelectionModel
 import java.awt.Dimension
 
@@ -18,7 +19,7 @@ class TemplateViewer {
         def templateMap = TemplateLoader.mapLoadedTemplates(templates)
         new SwingBuilder().edt {
             dialog(modal: true,
-                    title: 'Enter program name',
+                    title: 'Template Viewer',
                     alwaysOnTop: true,
                     resizable: true,
                     locationRelativeTo: null,
@@ -53,6 +54,25 @@ class TemplateViewer {
         }
     }
 
+    static void viewChange(String changeOutput) {
+        new SwingBuilder().edt {
+            dialog(modal: true,
+                    title: 'Change Viewer',
+                    alwaysOnTop: true,
+                    resizable: true,
+                    locationRelativeTo: null,
+                    pack: true,
+                    show: true,
+                    defaultCloseOperation: JFrame.DISPOSE_ON_CLOSE
+            ) {
+                vbox() {
+                    label(text: "The results of your applied changes are shown below")
+                    textArea(text: changeOutput)
+                }
+            }
+        }
+    }
+
     /**
      * Unsupported
      * @param template
@@ -61,46 +81,61 @@ class TemplateViewer {
         Change change = new Change(template)
         def json = change.json
         def frame = new SwingBuilder()
-        frame.frame(title: 'Enter program name',
-                alwaysOnTop: true,
+        frame.frame(title: 'Create a change',
                 resizable: true,
                 locationRelativeTo: null,
                 pack: true,
-                show: true) {
+                show: true,
+                defaultCloseOperation: JFrame.DISPOSE_ON_CLOSE) {
             hbox() {
-                scrollPane() {
-                    panel(size: new Dimension(0, 400)) {
-                        gridLayout(cols: 2, rows: 0)
-                        label(text: "Name of the function to be created:")
-                        textField(id: "functionName")
-                        label(text: "Fields to change:")
-                        label()
-                        json.keySet().each { key ->
-                            label(text: key)
-                            if (json.get(key) instanceof Map) {
-                                label(text: "subobject")
-                            } else {
-                                checkBox(id: key)
+                vbox() {
+                    scrollPane() {
+                        panel(size: new Dimension(0, 400)) {
+                            gridLayout(cols: 2, rows: 0)
+                            label(text: "Name of the function to be created:")
+                            textField(id: "functionName")
+                            label(text: "Fields to change:")
+                            label()
+                            json.keySet().each { key ->
+                                label(text: key)
+                                if (json.get(key) instanceof Map) {
+                                    label(text: "subobject")
+                                } else {
+                                    checkBox(id: key)
+                                }
                             }
+
                         }
-                        button(defaultButton: true, text: "Save", actionPerformed: {
+                    }
+                    button(defaultButton: true, text: "Save", actionPerformed: {
+                        if(frame.functionName.getText().matches("[a-zA-Z0-9]+")) {
                             def edits = []
                             json.keySet().each {
                                 if (frame."$it".isSelected()) {
                                     edits << it
                                 }
                             }
-                            println(edits)
-                            StringBuilder sb = new StringBuilder("void ${frame.functionName.getText()}(")
-                            edits.each { sb.append("$it, ") }
-                            sb.replace(sb.length() - 2, sb.length(), ") {\n")
-                            edits.each {
-                                sb.append("\tjson.$it = $it\n")
+                            if(edits.isEmpty()) {
+                                JOptionPane.showMessageDialog(null,
+                                        "Please select at least one field to edit",
+                                        "Invalid number of fields", JOptionPane.WARNING_MESSAGE)
+                            } else {
+                                println(edits)
+                                StringBuilder sb = new StringBuilder("void ${frame.functionName.getText()}(")
+                                edits.each { sb.append("$it, ") }
+                                sb.replace(sb.length() - 2, sb.length(), ") {\n")
+                                edits.each {
+                                    sb.append("\tjson.$it = $it\n")
+                                }
+                                sb.append("}")
+                                frame.output.text = sb.toString()
                             }
-                            sb.append("}")
-                            frame.output.text = sb.toString()
-                        })
-                    }
+                        } else {
+                            JOptionPane.showMessageDialog(null,
+                                    "Function name should have letters and numbers only",
+                                    "Invalid function name", JOptionPane.WARNING_MESSAGE)
+                        }
+                    })
                 }
                 vbox() {
                     label(text: "<html>Copy the text below into the $template.title template file<br />" +

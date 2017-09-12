@@ -40,6 +40,10 @@ class Change {
         }
     }
 
+    void show() {
+        TemplateViewer.viewChange(new JsonBuilder(json).toPrettyString())
+    }
+
     void reset() {
         json = slurper.parseText(template.escaped)
     }
