@@ -1,7 +1,5 @@
 package bradesco.readyApi
 
-import groovy.json.JsonBuilder
-import groovy.json.JsonSlurper
 import groovy.swing.SwingBuilder
 
 import javax.swing.JFrame
@@ -70,40 +68,43 @@ class TemplateViewer {
                 pack: true,
                 show: true) {
             hbox() {
-                panel() {
-                    gridLayout(cols: 2, rows:0)
-                    label(text: "Name of the function to be created:")
-                    textField(id: "functionName")
-                    label(text: "Fields to change:")
-                    label()
-                    json.keySet().each { key ->
-                        label(text: key)
-                        if (json.get(key) instanceof Map) {
-                            label(text: "subobject")
-                        } else {
-                            checkBox(id: key)
-                        }
-                    }
-                    button(defaultButton: true, text: "Save", actionPerformed: {
-                        def edits = []
-                        json.keySet().each {
-                            if (frame."$it".isSelected()) {
-                                edits << it
+                scrollPane() {
+                    panel(size: new Dimension(0, 400)) {
+                        gridLayout(cols: 2, rows: 0)
+                        label(text: "Name of the function to be created:")
+                        textField(id: "functionName")
+                        label(text: "Fields to change:")
+                        label()
+                        json.keySet().each { key ->
+                            label(text: key)
+                            if (json.get(key) instanceof Map) {
+                                label(text: "subobject")
+                            } else {
+                                checkBox(id: key)
                             }
                         }
-                        println(edits)
-                        StringBuilder sb = new StringBuilder("void ${frame.functionName.getText()}(")
-                        edits.each { sb.append("$it, ")}
-                        sb.replace(sb.length() - 2, sb.length(), ") {\n")
-                        edits.each {
-                            sb.append("\tjson.$it = $it\n")
-                        }
-                        sb.append("}")
-                        frame.output.text = sb.toString()
-                    })
+                        button(defaultButton: true, text: "Save", actionPerformed: {
+                            def edits = []
+                            json.keySet().each {
+                                if (frame."$it".isSelected()) {
+                                    edits << it
+                                }
+                            }
+                            println(edits)
+                            StringBuilder sb = new StringBuilder("void ${frame.functionName.getText()}(")
+                            edits.each { sb.append("$it, ") }
+                            sb.replace(sb.length() - 2, sb.length(), ") {\n")
+                            edits.each {
+                                sb.append("\tjson.$it = $it\n")
+                            }
+                            sb.append("}")
+                            frame.output.text = sb.toString()
+                        })
+                    }
                 }
                 vbox() {
-                    label(text: "Copy the text below into the $template.title template file", horizontalTextPosition: JLabel.CENTER)
+                    label(text: "<html>Copy the text below into the $template.title template file<br />" +
+                            "under ${TemplateProcessor.templateLocation}</html>", horizontalTextPosition: JLabel.CENTER)
                     textArea(id: "output", editable: false, size: new Dimension(200, 200))
                 }
             }
