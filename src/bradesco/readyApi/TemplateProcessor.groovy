@@ -52,7 +52,8 @@ class TemplateProcessor {
                     continue
                 }
                 def property = text[i+1..end]
-                text = "${text.substring(0, i)}\"$property\"${text.substring(end+2, text.length())}"
+                println property
+                text = "${text.substring(0, i)}$property${text.substring(end+2, text.length())}"
             }
         }
         template.body = text
