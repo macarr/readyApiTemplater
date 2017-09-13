@@ -30,11 +30,11 @@ class PostProspects extends Template {
 
         void toOnlyCpfNameEmailDefault() {
             reset()
-            json.origin = null
-            json.smsPermission = null
-            json.phoneNumber = null
-            json.areaCode = null
-            json.countryCode = null
+            json.remove "origin"
+            json."smsPermission"
+            json."phoneNumber"
+            json."areaCode"
+            json."countryCode"
         }
 
     }

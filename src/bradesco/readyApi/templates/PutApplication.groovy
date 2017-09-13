@@ -48,11 +48,11 @@ class PutApplication extends Template {
         void toNoNestedJsonDefault() {
             JsonSlurper slurper = new JsonSlurper()
             slurper.parseText(template.escaped)
-            json.addresses = null
-            json.customerAssets = null
-            json.fatcaResponses = null
-            json.phoneNumbers = null
-            json.proposal = null
+            json.remove "addresses"
+            json.remove "customerAssets"
+            json.remove "fatcaResponses"
+            json.remove "phoneNumbers"
+            json.remove "proposal"
         }
     }
 

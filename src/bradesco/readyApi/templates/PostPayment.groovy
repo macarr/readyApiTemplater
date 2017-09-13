@@ -32,8 +32,8 @@ class PostPayment extends Template {
 
         void toNoPayerNoBeneficiaryDefault() {
             reset()
-            json.cpfCnpjBeneficiary = null
-            json.cpfCnpjPayer = null
+            json.remove "cpfCnpjBeneficiary"
+            json.remove "cpfCnpjPayer"
         }
 
     }

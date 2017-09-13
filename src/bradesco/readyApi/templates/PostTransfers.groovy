@@ -32,7 +32,7 @@ class PostTransfers extends Template {
 
         void toExternalTransferDefault() {
             reset()
-            json.contactBankAccount = null
+            json.remove "contactBankAccount"
             json.modality = "TED"
             json.recipientBranchId = 212
             json.recipientAccountNumber = 2121
@@ -47,7 +47,7 @@ class PostTransfers extends Template {
 
         void toVaquinhaTransferDefault() {
             reset()
-            json.contactBankAccountId = null
+            json.remove "contactBankAccountId"
             json.purpose = "0"
             json.accountType = "0"
             json.amount = 10.00

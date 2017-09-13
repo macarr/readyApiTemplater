@@ -36,7 +36,7 @@ class ProposalObject extends Template {
         ************************************************/
 
         void removeUniqueId() {
-            json.uniqueID = null
+            json.remove "uniqueID"
         }
 
     }

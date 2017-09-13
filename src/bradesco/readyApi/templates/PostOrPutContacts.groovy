@@ -28,13 +28,13 @@ class PostOrPutContacts extends Template {
         * Put new change functions beneath this comment *
         ************************************************/
 
-        void removeAccount() {
-            json.account = null
+        void removeAccounts() {
+            json.remove "accounts"
         }
 
-        void toNoAccountNoCpfDefault() {
+        void toNoAccountsNoCpfDefault() {
             reset()
-            json.remove "account"
+            json.remove "accounts"
             json.remove "cpfCnpj"
             json.remove "cpfCnpjType"
         }
