@@ -152,7 +152,8 @@ vaquinhaTemplate.change.show()
 
 With the previously displayed changes, this will show a window containing the text of the
 PostOrPutVaquinhas template, with the amount changed to 15 and the name changed to 
-"${DataSource Create Vaquinha#Name}"
+"${DataSource Create Vaquinha#Name}". Be sure to remove this when you are finished with your
+test case, otherwise it will pop up every time this script is run.
 
 Once you have finished with your changes, you need to save them to a Ready API property so that
 other test steps can access them.
