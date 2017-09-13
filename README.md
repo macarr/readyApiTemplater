@@ -152,7 +152,7 @@ vaquinhaTemplate.change.show()
 
 With the previously displayed changes, this will show a window containing the text of the
 PostOrPutVaquinhas template, with the amount changed to 15 and the name changed to 
-"${DataSource Create Vaquinha#Name}". Be sure to remove this when you are finished with your
+"${DataSource Create Vaquinha#Name}". Be sure to remove this line when you are finished with your
 test case, otherwise it will pop up every time this script is run.
 
 Once you have finished with your changes, you need to save them to a Ready API property so that
@@ -226,7 +226,100 @@ In general, the process you will follow to set up a REST call is as follows:
 (```${#TestCase#propertyName)```)
 
 <h2>Creating a new change function
- 
+
+If you need to change a field in a template, but a function doesn't exist that does what you
+need yet, you need to create it and paste it into the template .groovy file manually.
+
+To do so, first find the file you need to edit. In this example, we will use the template for
+POST /credentials, PostCredentials.groovy. This file can be found in {Groovy Template File
+Storage Location}. In my case, this is located in
+C:\nextbank\next-integration-tests\next-soapui\scripts\bradesco\readyApi\templates .
+
+Next, open the file with a text editor - preferably something code-sensitive like Notepad++
+or Sublime Text. This will display the full code of the template file. The only part that you
+will need to worry about in this case is the part that looks like this:
+
+```
+class PostCredentialsChange extends Change {
+        PostCredentialsChange(Template template) {
+            super(template)
+        }
+        
+        /************************************************
+        * Put new change functions beneath this comment *
+        ************************************************/
+
+    }
+```
+
+This is called the Change class. The names will change based on what file you are editing
+(so, for example, in PostOrPutVaquinhas.groovy, this would say PostOrPutVaquinhasChange
+instead of PostCredentialsChange). In some cases, the "Put new change functions beneath
+this comment:" section may be missing, but it's not important. Just make sure that your new
+functions always go between the closing curly brace of the constructor (the brace on the line right after
+```super(template)```) and the closing curly brace of the class (the curly brace on the
+second-last line of the file.
+
+There are two ways of creating a change function.
+
+<h3>Automatically</h3>
+
+Run the (#Create New Change Function Step) script. This will load a window that allows you
+to input a name and select the fields in the template that you wish to change. Check the box
+next to each field that you wish to change and click the "Save" button on the lower left of
+the window. The text area in the lower right of the window will populate with the function
+that you need to copy. In our case, we will frequently want to change the cpf and password, 
+so we will select the checkboxes next to those and name the function cpfAndPassword. This
+will output the following:
+
+```
+void cpfAndPassword(cpf, password) {
+	json.cpf = cpf
+	json.password = password
+}
+```
+
+Which we will then paste into the appropriate location in the PostCredentials.groovy file. The
+Change class now looks like this:
+
+```
+class PostCredentialsChange extends Change {
+        PostCredentialsChange(Template template) {
+            super(template)
+        }
+        
+        /************************************************
+        * Put new change functions beneath this comment *
+        ************************************************/
+        
+        void cpfAndPassword(cpf, password) {
+        	json.cpf = cpf
+        	json.password = password
+        }
+
+    }
+```
+
+and we can use the new function in setup scripts:
+
+```
+def template = new PostCredentials()
+template.change.cpfAndPassword(cpf, password)
+```
+
+**Keep in Mind:** the naming conventions are designed to ensure that the scripts are as easy
+to read as possible, and so that when you read the script you will have a general idea of what
+is happening. In this example, we named the new function cpfAndPassword, the line we use to
+execute this function looks like ```template.change.cpfAndPassword```, which reads like an
+instruction. We are telling the ```template``` to ```change``` the ```cpf And Password```. This
+reads nicer than, for example, calling the function ```setupTheCredentials```, which will look
+like ```template.change.setupTheCredentials```. While still a valid function name, this does
+not read as nicely as the previous instruction (tell the ```template``` to ```change``` the
+```setupTheCredentials```???).
+
+<h3>Manually</h3>
+
+
 
 <h1>Troubleshooting</h1>
 
