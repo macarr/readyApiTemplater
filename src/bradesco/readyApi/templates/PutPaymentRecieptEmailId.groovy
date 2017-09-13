@@ -4,6 +4,11 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * PUT /paymentRecieptEmail/id
+ *
+ * Requires the ReadyAPI property ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_YESTERDAY} to be set
+ */
 class PutPaymentRecieptEmailId extends Template {
 
     PutPaymentRecieptEmailIdChange change

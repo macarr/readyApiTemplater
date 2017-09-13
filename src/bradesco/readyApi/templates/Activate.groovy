@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * Activate for P&O
+ */
 class Activate extends Template {
 
     ActivateChange change

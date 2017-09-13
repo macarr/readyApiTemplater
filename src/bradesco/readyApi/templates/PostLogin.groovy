@@ -33,7 +33,7 @@ class PostLogin extends Template {
          * @param cpf
          * @param password
          */
-        void loginCredentials(String cpf, String password) {
+        void loginCredentials(cpf, password) {
             json.cpf = cpf
             json.password = password
         }
@@ -42,7 +42,7 @@ class PostLogin extends Template {
          * Change the risk score
          * @param riskScore
          */
-        void riskScore(int riskScore) {
+        void riskScore(riskScore) {
             json.riskScore = riskScore
         }
 
@@ -56,7 +56,7 @@ class PostLogin extends Template {
          * @param latitude
          * @param longitude
          */
-        void latitudeAndLongitude(int latitude, int longitude) {
+        void latitudeAndLongitude(latitude, longitude) {
             json.latitude = latitude
             json.longitude = longitude
         }

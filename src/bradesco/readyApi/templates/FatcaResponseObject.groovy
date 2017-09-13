@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * Fatca Response subobject
+ */
 class FatcaResponseObject extends Template {
 
     FatcaResponseObjectChange change

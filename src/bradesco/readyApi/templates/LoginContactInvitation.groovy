@@ -4,20 +4,23 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
-class PostCreditCardsTravelNoticeNorthAmerica extends Template {
+/**
+ * POST /login/contactInvitation
+ */
+class LoginContactInvitation extends Template {
 
-    PostCreditCardsTravelNoticeNorthAmericaChange change
+    LoginContactInvitationChange change
     File templateFile
-    def templateName = "GBL_CREDITCARDS_TRAVELNOTICE_POST_NORTHAMERICA"
+    def templateName = "GBL_LOGIN_CONTACTINVITATION_DEFAULT"
 
-    PostCreditCardsTravelNoticeNorthAmerica() {
+    LoginContactInvitation() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new PostCreditCardsTravelNoticeNorthAmericaChange(this)
+        this.change = new LoginContactInvitationChange(this)
     }
 
-    class PostCreditCardsTravelNoticeNorthAmericaChange extends Change {
-        PostCreditCardsTravelNoticeNorthAmericaChange(Template template) {
+    class LoginContactInvitationChange extends Change {
+        LoginContactInvitationChange(Template template) {
             super(template)
         }
         

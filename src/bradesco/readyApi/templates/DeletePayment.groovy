@@ -4,6 +4,11 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * DELETE /payment
+ *
+ * Requires ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_TOMORROW} property to be set
+ */
 class DeletePayment extends Template {
 
     DeletePaymentChange change

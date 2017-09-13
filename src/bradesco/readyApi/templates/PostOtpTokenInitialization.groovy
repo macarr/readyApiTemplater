@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /otpToken/initialization
+ */
 class PostOtpTokenInitialization extends Template {
 
     PostOtpTokenInitializationChange change

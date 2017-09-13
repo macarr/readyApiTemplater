@@ -4,6 +4,14 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * Product subobject
+ *
+ * Requires the following ReadyAPI properties to be set:
+ *
+ * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_PLUS_1_YEAR}
+ * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_14_DAYS}
+ */
 class ProductObject extends Template {
 
     ProductObjectChange change
@@ -26,7 +34,7 @@ class ProductObject extends Template {
         ************************************************/
 
         void removeUniqueId() {
-            json.uniqueId = null
+            json.remove uniqueID
         }
 
     }

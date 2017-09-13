@@ -20,7 +20,7 @@ TemplateLoader.generateTemplateMap()
 /*
     View all template files
  */
-//TemplateViewer.view()
+TemplateViewer.view()
 
 /*
     Create a change method for a template
@@ -32,13 +32,13 @@ TemplateViewer.createChange(template)*/
 
 //Specific Change Test
 
+/*
 def postLoginTemplate = new PostLogin()
 println "Original:::\t$postLoginTemplate.body"
 postLoginTemplate.change.loginCredentials(cpf, password)
 postLoginTemplate.change.riskScore(4)
 def output = postLoginTemplate.change.apply()
 println "Output:::\t\t$output\n"
-//testRunner.testCase.setPropertyValue('template', output)
 
 def deviceJsonTemplate = new DeviceObject()
 println "Original:::\t$deviceJsonTemplate.body"
@@ -54,11 +54,10 @@ vaquinha.change.theseFields([name:"Matt C", description:"This is a test vaquinha
 output = vaquinha.change.apply()
 println "Output:::\t\t$output\n"
 
-//def applications = new PutApplication()
-//println "Original:::\t$applications.body"
-//applications.change.phoneNumber(0, "416", "1", "5551234")
-//applications.change.addPhone("647", "1", "1110987", "6", "N")
-//println "Output:::\t\t${applications.change.apply()}"
+def applications = new PutApplication()
+println "Original:::\t$applications.body"
+applications.change.toNoNestedJsonDefault()
+println "Output:::\t\t${applications.change.apply()}"
 
 
 
@@ -71,4 +70,5 @@ PostPreregistrationsOnboardingStatus onboardingStatus = new PostPreregistrations
 println "Original:::\t$onboardingStatus.body"
 onboardingStatus.change.toRejectedDefault()
 println "Output:::\t\t${onboardingStatus.change.apply()}"
+*/
 

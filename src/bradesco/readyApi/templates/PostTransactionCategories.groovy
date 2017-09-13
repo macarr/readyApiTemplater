@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /transactionCategories
+ */
 class PostTransactionCategories extends Template {
 
     PostTransactionCategoriesChange change

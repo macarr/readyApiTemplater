@@ -4,6 +4,12 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /partner
+ *
+ * Requires the ReadyAPI property ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_14_DAYS}
+ * to be set
+ */
 class PostPartner extends Template {
 
     PostPartnerChange change

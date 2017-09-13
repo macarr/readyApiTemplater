@@ -5,7 +5,7 @@ import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
 /**
- * Template for device JSON objects in requests
+ * Device subobject
  */
 class DeviceObject extends Template {
 
@@ -28,7 +28,7 @@ class DeviceObject extends Template {
          * Change the device ID
          * @param deviceId
          */
-        void deviceId(String deviceId) {
+        void deviceId(deviceId) {
             json.deviceId = deviceId
         }
 
@@ -38,7 +38,7 @@ class DeviceObject extends Template {
          * @param areaCode
          * @param phone
          */
-        void phoneNumber(int countryCode, int areaCode, int phone) {
+        void phoneNumber(countryCode, areaCode, phone) {
             json.countryCode = countryCode
             json.areaCode = areaCode
             json.phone = phone
@@ -49,7 +49,7 @@ class DeviceObject extends Template {
          * @param make
          * @param model
          */
-        void makeAndModel(String make, String model) {
+        void makeAndModel(make, model) {
             json.make = make
             json.model = model
         }

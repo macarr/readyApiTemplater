@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /password/check/ivr
+ */
 class PostPasswordCheckIvr extends Template {
 
     PostPasswordCheckIvrChange change

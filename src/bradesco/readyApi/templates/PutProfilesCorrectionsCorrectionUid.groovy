@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * PUT /profiles/corrections/correctionUid
+ */
 class PutProfilesCorrectionsCorrectionUid extends Template {
 
     PutProfilesCorrectionsCorrectionUidChange change

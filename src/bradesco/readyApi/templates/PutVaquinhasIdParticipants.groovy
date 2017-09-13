@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * PUT /vaquinhas/vaquinhaId/participants
+ */
 class PutVaquinhasIdParticipants extends Template {
 
     PutVaquinhasIdParticipantsChange change

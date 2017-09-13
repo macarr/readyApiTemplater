@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * Phone number subobject
+ */
 class PhoneNumberObject extends Template {
 
     PhoneNumberObjectChange change

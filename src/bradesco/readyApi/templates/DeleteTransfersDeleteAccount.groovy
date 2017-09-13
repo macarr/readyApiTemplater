@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * DELETE /transfers/deleteAccount
+ */
 class DeleteTransfersDeleteAccount extends Template {
 
     DeleteTransferDeleteAccountChange change

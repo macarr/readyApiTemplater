@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /invitations/self
+ */
 class PostInvitationsSelf extends Template {
 
     PostInvitationsSelfChange change
@@ -24,6 +27,15 @@ class PostInvitationsSelf extends Template {
         /************************************************
         * Put new change functions beneath this comment *
         ************************************************/
+
+        /**
+         * Removes phone number, but maintains smsPermission=true
+         */
+        void toNoPhone() {
+            json.remove "phoneNumber"
+            json.remove "areaCode"
+            json.remove "countryCode"
+        }
 
     }
 

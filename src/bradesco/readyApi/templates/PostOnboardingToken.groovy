@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /onboardingToken
+ */
 class PostOnboardingToken extends Template {
 
     PostOnboardingTokenChange change

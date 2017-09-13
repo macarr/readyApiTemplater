@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * PUT /notification/inappMessages
+ */
 class PutNotificationInappMessages extends Template {
 
     PutNotificationInappMessagesChange change

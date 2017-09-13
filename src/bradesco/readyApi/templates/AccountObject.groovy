@@ -4,20 +4,23 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
-class BlockAddress extends Template {
+/**
+ * Account Subobject
+ */
+class AccountObject extends Template {
 
-    BlockAddressChange change
+    AccountObjectChange change
     File templateFile
-    def templateName = "GBL_ADDRESS_BLOCK_DEFAULT"
+    def templateName = "GBL_ACCOUNT_BLOCK_DEFAULT"
 
-    BlockAddress() {
+    AccountObject() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new BlockAddressChange(this)
+        this.change = new AccountObjectChange(this)
     }
 
-    class BlockAddressChange extends Change {
-        BlockAddressChange(Template template) {
+    class AccountObjectChange extends Change {
+        AccountObjectChange(Template template) {
             super(template)
         }
         

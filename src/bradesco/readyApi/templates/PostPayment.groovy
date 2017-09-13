@@ -4,6 +4,11 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /payment
+ *
+ * Requires the ReadyAPI property ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_TODAY} to be set
+ */
 class PostPayment extends Template {
 
     PostPaymentChange change

@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ *
+ */
 class PutProfilesAddress extends Template {
 
     PutProfilesAddressChange change

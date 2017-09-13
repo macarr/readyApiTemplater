@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /credentials
+ */
 class PostCredentials extends Template {
 
     PostCredentialsChange change
@@ -24,6 +27,16 @@ class PostCredentials extends Template {
         /************************************************
         * Put new change functions beneath this comment *
         ************************************************/
+
+        /**
+         * Change the cpf and password
+         * @param cpf
+         * @param password
+         */
+        void cpfAndPassword(cpf, password) {
+            json.cpf = cpf
+            json.password = password
+        }
 
     }
 

@@ -4,6 +4,15 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * PUT /offer
+ *
+ * Requires the following ReadyAPI properties to be set:
+ *
+ * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_14_DAYS}
+ * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_PLUS_3_MONTHS}
+ * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_TOMORROW}
+ */
 class PutOffer extends Template {
 
     PutOfferChange change

@@ -4,20 +4,23 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
-class PostInvitationsSelfNoPhone extends Template {
+/**
+ * Address subobject
+ */
+class AddressObject extends Template {
 
-    PostInvitationsSelfNoPhoneChange change
+    AddressObjectChange change
     File templateFile
-    def templateName = "GBL_INVITATIONS_SELF_POST_NO_PHONE"
+    def templateName = "GBL_ADDRESS_BLOCK_DEFAULT"
 
-    PostInvitationsSelfNoPhone() {
+    AddressObject() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new PostInvitationsSelfNoPhoneChange(this)
+        this.change = new AddressObjectChange(this)
     }
 
-    class PostInvitationsSelfNoPhoneChange extends Change {
-        PostInvitationsSelfNoPhoneChange(Template template) {
+    class AddressObjectChange extends Change {
+        AddressObjectChange(Template template) {
             super(template)
         }
         

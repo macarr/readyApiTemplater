@@ -4,20 +4,23 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
-class TransfersTransferIdRecieptsEmail extends Template {
+/**
+ * POST /goals/signature
+ */
+class PostGoalsSignature extends Template {
 
-    TransfersTransferIdRecieptsEmailChange change
+    PostGoalsSignatureChange change
     File templateFile
-    def templateName = "GBL_TRANSFERS_TRANSFERID_RECEIPTS_EMAIL_DEFAULT"
+    def templateName = "GBL_GOALS_SIGNATURE_POST_JUST_TC"
 
-    TransfersTransferIdRecieptsEmail() {
+    PostGoalsSignature() {
         templateFile = TemplateLoader.fetch(templateName)
         load(templateFile)
-        this.change = new TransfersTransferIdRecieptsEmailChange(this)
+        this.change = new PostGoalsSignatureChange(this)
     }
 
-    class TransfersTransferIdRecieptsEmailChange extends Change {
-        TransfersTransferIdRecieptsEmailChange(Template template) {
+    class PostGoalsSignatureChange extends Change {
+        PostGoalsSignatureChange(Template template) {
             super(template)
         }
         

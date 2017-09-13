@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST or PUT /contacts
+ */
 class PostOrPutContacts extends Template {
 
     PostOrPutContactsChange change

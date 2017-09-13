@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * PUT /deviceRegistration/documentsName
+ */
 class PutDeviceRegistrationDocumentsName extends Template {
 
     PutDeviceRegistrationDocumentsNameChange change

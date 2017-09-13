@@ -4,6 +4,9 @@ import bradesco.readyApi.Change
 import bradesco.readyApi.Template
 import bradesco.readyApi.TemplateLoader
 
+/**
+ * POST /password/temporaryPassword/verify
+ */
 class PostPasswordTemporaryPasswordVerify extends Template {
 
     PostPasswordTemporaryPasswordVerifyChange change
