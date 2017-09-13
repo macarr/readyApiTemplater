@@ -9,17 +9,20 @@ import groovy.json.JsonSlurper
  * PUT /application
  *
  * Requires the following Ready API properties to be set:
- * ${LOCAL_JSON_TEMPLATES#TC_ADDRESS_BLOCK_DEFAULT}
+ * <ul>
+ * <li>${LOCAL_JSON_TEMPLATES#TC_ADDRESS_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_ASSET_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_FACTARESPONSE_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_PHONENUMBER_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_PROPOSAL_BLOCK_DEFAULT}
+ * <li>${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_6_MONTH}
+ * </ul>
+ *
  * @see bradesco.readyApi.templates.AddressObject
- * ${LOCAL_JSON_TEMPLATES#TC_ASSET_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.AssetObject
- * ${LOCAL_JSON_TEMPLATES#TC_FACTARESPONSE_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.FatcaResponseObject
- * ${LOCAL_JSON_TEMPLATES#TC_PHONENUMBER_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.PhoneNumberObject
- * ${LOCAL_JSON_TEMPLATES#TC_PROPOSAL_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.ProposalObject
- * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_6_MONTH}
  */
 class PutApplication extends Template {
 

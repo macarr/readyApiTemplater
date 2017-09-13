@@ -487,6 +487,43 @@ with more complex logic, feel free to use it in these scripts. Certain features,
 an extra element to a list, or checking to see if an element exists, may be required for more
 complex functions.
 
+<h3>Quick Advanced Command Reference</h3>
+
+```json.remove "key"``` => removes the "key" field from the json object
+
+e.g.
+```
+start:
+{
+  "foo":"bar",
+  "qux":"baz"
+}
+
+json.remove "foo"
+
+result:
+{
+  "qux":"baz"
+}
+```
+
+```json.list << newListElement``` => adds another element to a list
+
+e.g.
+```
+start:
+{
+  "foo":["bar", "baz"]
+}
+
+json.foo << "qux"
+
+result:
+{
+  "foo":["bar", "baz", "qux"]
+}
+```
+
 <h1>Troubleshooting</h1>
 
 <h3>FileNotFoundException</h3>

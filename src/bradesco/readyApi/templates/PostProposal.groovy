@@ -10,8 +10,8 @@ import bradesco.readyApi.TemplateLoader
  * Requires the following ReadyAPI properties to be set:
  *
  * ${LOCAL_JSON_TEMPLATES#TC_PRODUCT_BLOCK_DEFAULT}
- * @see bradesco.readyApi.templates.ProductObject
  * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_PLUS_1_YEAR}
+ * @see bradesco.readyApi.templates.ProductObject
  */
 class PostProposal extends Template {
 

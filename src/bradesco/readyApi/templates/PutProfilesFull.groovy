@@ -8,16 +8,18 @@ import bradesco.readyApi.TemplateLoader
  * PUT /profiles
  *
  * Requires the following ReadyAPI properties to be set:
+ * <ul>
+ * <li>${LOCAL_JSON_TEMPLATES#TC_ADDRESS_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_ASSET_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_FACTARESPONSE_BLOCK_DEFAULT}
+ * <li>${LOCAL_JSON_TEMPLATES#TC_PHONENUMBER_BLOCK_DEFAULT}
+ * <li>${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_6_MONTH}
+ * </ul>
  *
- * ${LOCAL_JSON_TEMPLATES#TC_ADDRESS_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.AddressObject
- * ${LOCAL_JSON_TEMPLATES#TC_ASSET_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.AssetObject
- * ${LOCAL_JSON_TEMPLATES#TC_FACTARESPONSE_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.FatcaResponseObject
- * ${LOCAL_JSON_TEMPLATES#TC_PHONENUMBER_BLOCK_DEFAULT}
  * @see bradesco.readyApi.templates.PhoneNumberObject
- * ${#[Main#MAIN_TEST_PARAM#Global_Dates]#GBL_DATE_MINUS_6_MONTH}
  */
 class PutProfilesFull extends Template {
 
