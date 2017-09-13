@@ -225,7 +225,7 @@ In general, the process you will follow to set up a REST call is as follows:
 6. Create a REST step, using the new property as the request body
 (```${#TestCase#propertyName)```)
 
-<h2>Creating a new change function
+<h2>Creating a new change function</h2>
 
 If you need to change a field in a template, but a function doesn't exist that does what you
 need yet, you need to create it and paste it into the template .groovy file manually.
@@ -236,8 +236,43 @@ Storage Location}. In my case, this is located in
 C:\nextbank\next-integration-tests\next-soapui\scripts\bradesco\readyApi\templates .
 
 Next, open the file with a text editor - preferably something code-sensitive like Notepad++
-or Sublime Text. This will display the full code of the template file. The only part that you
-will need to worry about in this case is the part that looks like this:
+or Sublime Text. This will display the full code of the template file.
+
+```
+package bradesco.readyApi.templates
+
+import bradesco.readyApi.Change
+import bradesco.readyApi.Template
+import bradesco.readyApi.TemplateLoader
+
+class PostCredentials extends Template {
+
+    PostCredentialsChange change
+    File templateFile
+    def templateName = "GBL_CREDENTIALS_POST_DEFAULT"
+
+    PostCredentials() {
+        templateFile = TemplateLoader.fetch(templateName)
+        load(templateFile)
+        this.change = new PostCredentialsChange(this)
+    }
+
+    class PostCredentialsChange extends Change {
+        PostCredentialsChange(Template template) {
+            super(template)
+        }
+        
+        /************************************************
+        * Put new change functions beneath this comment *
+        ************************************************/
+
+    }
+
+}
+```
+
+The only part that you will need to worry about in this case is the part at the end between
+the second time the word "class" appears, and the second-last closing curly brace:
 
 ```
 class PostCredentialsChange extends Change {
@@ -314,12 +349,143 @@ execute this function looks like ```template.change.cpfAndPassword```, which rea
 instruction. We are telling the ```template``` to ```change``` the ```cpf And Password```. This
 reads nicer than, for example, calling the function ```setupTheCredentials```, which will look
 like ```template.change.setupTheCredentials```. While still a valid function name, this does
-not read as nicely as the previous instruction (tell the ```template``` to ```change``` the
-```setupTheCredentials```???).
+not read as nicely as the previous instruction (telling the ```template``` to ```change``` the
+```setupTheCredentials``` is a nonsensical instruction to a human).
 
 <h3>Manually</h3>
 
+If you feel slightly more proficient at coding, or if you need to set up a slightly more
+complicated change, you can create one manually. This will not require you to run the
+"Create New Change Function" script. 
 
+Each change object has access to a variable called "json". This variable contains the JSON
+representation of the template, and is what the Change class edits when you execute a change
+function.
+
+Functions follow a basic structure:
+
+```
+void functionName(newValue1, newValue2, ..., lastNewValue) {
+    json.fieldToChange1 = newValue1
+    json.fieldToChange2 = newValue2
+    ...
+    json.lastFieldToChange = lastNewValue
+}
+```
+
+For a simple example, we will manually create the same function we created in the Automatic
+section:
+
+```
+void cpfAndPassword(newCpf, newPassword) {
+    json.cpf = newCpf
+    json.password = newPassword
+}
+```
+
+Here, we have named our function "cpfAndPassword" (per the naming conventions at the end of
+the "Automatic" section), given it two new values, and changed those fields in the JSON to
+the new values. 
+
+For a more advanced example, we will create a default setup method. Say, for example, we
+regularly have to call POST /credentials with a certain set of values in order to create
+credentials for a VIP customer. We can use a change function to set these up all at once,
+without requiring us to provide those values every time:
+
+```
+void toVipCredentials() {
+    reset()
+    json.cpf = "12345678901"
+    json.password = "0987896789"
+    json.invitationId = "f29h847"
+}
+```
+
+Here, we set our template to the default (using ```reset()```), and set each field of our
+request body with the value that it will take when we create credentials for this VIP.
+
+There are a couple of important things to note here:
+
+1 - ```reset()```. This is a function I have not yet mentioned. You will likely not have to
+use it very often. All it does is reset the changes to the defaults. This is helpful if you
+are reusing the same template variable to set up different calls, e.g.:
+
+```
+def template = new PostCredentials()
+template.change.cpf("2569348756293")
+testRunner.testCase.setPropertyValue("postCredentials1", template.change.apply())
+template.reset()
+template.change.password("23457896")
+testRunner.testCase.setPropertyValue("postCredentials2", template.change.apply())
+``` 
+
+In this case, we are using the same template (so that we don't have to ```def``` a new
+variable - this lowers the lines of code we need), but resetting it after changing the CPF
+for postCredentials1 so that that CPF change doesn't affect postCredentials2.
+
+We use this in our default template setup so that we clear out any other changes, so that the
+function operates as expected. This leads us to our second point.
+
+2 - Naming. In the Automatic section, we mentioned naming conventions, and how to select
+function names for human readability. Note that in our new function, we've selected the name
+```toVipCredentials```. This will read in the code as ```template.change.toVipCredentials```.
+This succeeds in our goal of making script commands read like human commands - we are telling
+the ```template``` to ```change``` ```toVipCredentials```, i.e. change the template into
+vip credentials.
+
+In a final example, we will use more advanced JSON principles. Please ensure that you understand
+JSON fundamentals before attempting this - additionally, most developers will be able to help
+you. In groovy, it is possible to address JSON using its native notation. If a JSON object
+is contained in a variable, you can access fields in that object by executing the command
+```variable.field```. If the field is a sub-object (i.e. an object contained within another
+object), you can access the fields of that sub-object in the same way by adding another dot
+after the field of the sub-object, followed by the name of a field inside the sub-object,
+e.g. ```variable.subObjectField.field```. If the field is a list, you can use array notation
+to access the n'th element of that list (where n is the numeric position of the element you want),
+e.g. ```variable.listField[n]```. For example, given the following JSON object:
+ 
+```
+{
+   name: "Robert",
+   phoneNumber: {
+       "areaCode":416,
+       "number":5551234
+   },
+   nicknames: ["bob", "rob", "bert"]
+}
+```
+
+stored in the variable named "person":
+
+```person.name``` would result in "Robert"
+
+```person.phoneNumber.number``` would result in 5551234
+
+```person.nicknames[1]``` would result in "rob" (remember - arrays start at 0!)
+
+these are all interchangeable - if each nickname was a subobject, you could access fields of
+that subobject with ```person.nickname[1].fieldName```. If phoneNumber.number was a list of
+phone numbers, you would get the first number using ```person.phoneNumber.number[0]```, et
+cetera.
+
+We will apply this to the PUT /applications template (PutApplications). This template contains
+one phone number by default. We want to change the field "primaryPhoneInd" in that one phone
+number. The root object is stored in the json variable of the Change class. The phone numbers
+are a list in the root object under the field "phones". The function to execute this change is
+as follows:
+
+```
+void firstPhonePrimaryPhoneInd(primaryPhoneInd) {
+    json.phones[0].primaryPhoneInd = primaryPhoneInd
+}
+```
+
+<h3>Advanced Scripting</h3>
+
+All of these scripts are run with groovy. If you have learned some groovy and feel comfortable
+with more complex logic, feel free to use it in these scripts. Certain features, like adding
+an extra element to a list, or checking to see if an element exists, may be required for more
+complex functions.
 
 <h1>Troubleshooting</h1>
 
